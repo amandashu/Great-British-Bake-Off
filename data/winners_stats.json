@@ -1,0 +1,42 @@
+{
+"bakers": [
+"Candice",
+"Edd",
+"Frances",
+"Joanne",
+"John",
+"Nadiya",
+"Nancy",
+"Sophie"
+],
+"star_baker": [
+3,
+0,
+1,
+1,
+1,
+3,
+1,
+2
+],
+"technical": [
+1,
+2,
+1,
+3,
+1,
+4,
+3,
+2
+],
+"handshake": [
+1,
+0,
+1,
+0,
+0,
+1,
+0,
+1
+]
+}

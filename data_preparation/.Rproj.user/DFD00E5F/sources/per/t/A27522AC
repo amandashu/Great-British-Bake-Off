@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1590791289790.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4127300095",
+    "id" : "A27522AC",
+    "lastKnownWriteTime" : 1590791331,
+    "last_content_update" : 1590791331222,
+    "path" : "C:/Users/Amanda/OneDrive/Documents/dsc106/gbbo/export_data.R",
+    "project_path" : "export_data.R",
+    "properties" : {
+        "cursorPosition" : "8,22",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

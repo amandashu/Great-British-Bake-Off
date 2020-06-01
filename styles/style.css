@@ -1,0 +1,9 @@
+.parent--container {
+    display: flex;
+}
+
+.chart--container {
+    height: 100%;
+    width: 100%;
+    min-height: 400px;
+}
