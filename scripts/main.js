@@ -1,4 +1,171 @@
 
+function plotLine() {
+	let line = Highcharts.chart('myLine', {
+		chart: {
+			type: "line"
+		},
+		title: {
+			text: 'Average Viewership Within 7 Days',
+			style: {
+				fontWeight:'bold',
+			}
+		},
+		xAxis: {
+			// categories: ['January','February','March'],
+			title: {
+				text: "Series",
+				style: {
+					fontWeight:'bold',
+				}
+			},
+		},
+		yAxis: {
+			min: 0,
+			title: {
+				text: 'Viewers (Millions)',
+				align: 'middle',
+				style: {
+					fontWeight:'bold',
+				}
+			},
+		},
+		legend: false,
+		credits: {
+			enabled: false
+		},
+		series: [{
+             data: viewers['data']
+        }],
+		tooltip: { enabled: false },
+		plotOptions:{
+			series: {
+				animation: false
+			}
+        },
+        exporting: {
+            enabled: false
+          }
+	});
+}
+
+function plotAgePie() {
+	var pie = Highcharts.chart('myAgePie', {
+		chart: {
+			type: "pie"
+		},
+		title: {
+			text: 'Age',
+			style: {
+				fontWeight:'bold',
+			}
+		},
+		credits: {
+			enabled: false
+		},
+		series: [{
+			data: ages,
+			dataLabels: {
+				enabled: true,
+				format:'<b>{point.percentage:.1f}%',
+				distance: '-40%',
+				color:  '#FFFFFF',
+				borderColor: '#FFFFFF',
+				style: {
+					fontSize: "14px",
+					textOutline: false
+				}
+			},
+			marker: {
+				enabled: true
+			}
+		}],
+		plotOptions: {
+			pie: {
+				showInLegend: true,
+				startAngle: 90
+			},
+			series: {
+				animation: false
+			}
+		},
+		tooltip: { enabled: false },
+		legend: {
+			layout: 'vertical',
+			align: 'right',
+			verticalAlign: 'top',
+			x: 0,
+			y: 30,
+			floating: true,
+			borderWidth: 1,
+			backgroundColor:'#FFFFFF',
+			borderColor: '#FFFFFF',
+			symbolRadius: 0
+        },
+        exporting: {
+            enabled: false
+          }
+	});
+}
+
+function plotGenderPie() {
+	var pie = Highcharts.chart('myGenderPie', {
+		chart: {
+			type: "pie"
+		},
+		title: {
+			text: 'Gender',
+			style: {
+				fontWeight:'bold',
+			}
+		},
+		credits: {
+			enabled: false
+		},
+		series: [{
+			data: gender,
+			dataLabels: {
+				enabled: true,
+				format:'<b>{point.percentage:.1f}%',
+				distance: '-40%',
+				color:  '#FFFFFF',
+				borderColor: '#FFFFFF',
+				style: {
+					fontSize: "14px",
+					textOutline: false
+				}
+			},
+			marker: {
+				enabled: true
+			}
+		}],
+		plotOptions: {
+			pie: {
+				showInLegend: true,
+				startAngle: 90
+			},
+			series: {
+				animation: false
+			}
+		},
+		tooltip: { enabled: false },
+		legend: {
+			layout: 'vertical',
+			align: 'right',
+			verticalAlign: 'top',
+			x: 0,
+			y: 30,
+			floating: true,
+			borderWidth: 1,
+			backgroundColor:'#FFFFFF',
+			borderColor: '#FFFFFF',
+			symbolRadius: 0
+        },
+        exporting: {
+            enabled: false
+          }
+	});
+}
+
 function plotWordCloud(){
     let myWordCloud = Highcharts.chart('myWordCloud', {
         accessibility: {
@@ -31,7 +198,10 @@ function plotWordCloud(){
         }],
         tooltip: {
             enabled: false
-        }
+        },
+        exporting: {
+            enabled: false
+          }
         // title: {
         //     text: 'Wordcloud of Bake Descriptions'
         // },
@@ -102,8 +272,12 @@ function plotStackColumn(){
         }, {
             name: 'star baker',
             data: winnerStats['star_baker']
-        }]
-    });
+        }],
+        exporting: {
+            enabled: false
+          }
+    }
+    );
 }
 
 
@@ -114,16 +288,31 @@ async function loadJSON(path) {
 }
 
 function init() {
-    statsPromise = loadJSON('./data/winners_stats.json');
+    viewersPromise = loadJSON('./data/viewers_by_season.json');
+    agePromise = loadJSON('./data/ages.json');
+    genderPromise = loadJSON('./data/gender.json');
     wordsPromise = loadJSON('./data/bake_words.json');
+    statsPromise = loadJSON('./data/winners_stats.json');
 
-	statsPromise.then(function (stats) {
-        winnerStats = stats
-		plotStackColumn();
+    viewersPromise.then(function (v){
+        viewers = v;
+        plotLine();
+    });
+    agePromise.then(function (a){
+        ages = a;
+        plotAgePie();
+    });
+    genderPromise.then(function (g){
+        gender = g;
+        plotGenderPie();
     });
     wordsPromise.then(function (w){
         words = w;
         plotWordCloud();
+    });
+    statsPromise.then(function (s) {
+        winnerStats = s
+		plotStackColumn();
     });
 }
 
