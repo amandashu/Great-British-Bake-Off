@@ -1,3 +1,13 @@
+*{
+    background-color: #eaf1f8;
+}
+
+
+header {
+    text-align: center;
+}
+
+
 .parent--container {
     display: flex;
 }
