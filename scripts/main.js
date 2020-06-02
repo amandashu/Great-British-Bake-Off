@@ -324,19 +324,7 @@ function plotBubble(){
 		.await(ready)
 
 	function ready (error, datapoints){
-		// example html
-		// <svg viewBox="0 0 300 100">
-		// 	<defs>
-		// 	<pattern id="test" height = "100%" width = "100%"            
-		// 	patternContentUnits = "objectBoundingBox">
-		// 		<image x="0" y="0" height=1 width=1 href="images/edd.jpg"></image>
-		// 	</pattern>
-		// 	</defs>
-		
-		// 	<circle cx="150" cy="50" r="40" fill="url(#test)" />
-		// </svg>
-
-		//create patterns for circles
+		// create patterns for circles
 		defs.selectAll(".baker-pattern")
 		.data(datapoints)
 		.enter().append("pattern")
@@ -356,11 +344,25 @@ function plotBubble(){
 			return d.image_path
 		});
 
+		// example html
+		// <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+		// viewBox="0 0 500 500">
+		// <g id="UrTavla">
+		// 	<circle style="fill:url(#toning);stroke:#010101;stroke-width:1.6871;stroke-miterlimit:10;" cx="250" cy="250" r="245">
+		// 	</circle>
+		// 	<text x="50%" y="50%" text-anchor="middle" stroke="#51c5cf" stroke-width="2px" dy=".3em">Look, I’m centered!Look, I’m centered!</text>
+		// </g>
+		// </svg>
+
 		//draw circles
-		var circles = svg.selectAll(".artist")
+		var g = svg.selectAll(".circletext")
 			.data(datapoints)
-			.enter().append("circle")
-			.attr("class","artist")
+			.enter()
+			.append("g")
+			.attr("class","circletext")
+		
+		circle = g.append("circle")
+			.attr("class","baker")
 			.attr("r",function(d){
 				return radiusScale(d.followers)
 			})
@@ -369,19 +371,141 @@ function plotBubble(){
 			})
 			.attr("stroke","black")
 
+		label = g.append("text")
+				.attr("class","serieslabel")
+				.attr("text-anchor","middle")
+				.attr("stroke","black")
+				.attr("stroke-width","1px")
+				.attr("dy",".3em")
+				// .attr("fontsize","50%")
+				.attr("opacity",0)
+				.text(function(d) {return "Series " + d.series + " Winner"})
 
-	simulation.nodes(datapoints)
-		.on("tick",ticked)
+		g.on("mouseover",
+		function mouseOver(d) {
+			d3.select(this).select(".baker").attr("opacity",0.2)
+			d3.select(this).select(".serieslabel").attr("opacity",1)
+		  })
+		  .on("mouseout", function mouseOut() {
+			d3.select(this).select(".baker").attr("opacity",1)
+			d3.select(this).select(".serieslabel").attr("opacity",0)
+		  })
 
-	function ticked(){
-		circles.
-			attr("cx",function(d){
-				return d.x
-			})
-			.attr("cy", function(d){
-				return d.y
-			})
-	}
+
+		simulation.nodes(datapoints)
+			.on("tick",ticked)
+
+		function ticked(){
+			circle.
+				attr("cx",function(d){
+					return d.x
+				})
+				.attr("cy", function(d){
+					return d.y
+				})
+			label.
+				attr("x",function(d){
+					return d.x
+				})
+				.attr("y", function(d){
+					return d.y
+				})
+		}
+
+
+
+
+
+
+		// example html
+		// <svg viewBox="0 0 300 100">
+		// 	<defs>
+		// 	<pattern id="test" height = "100%" width = "100%"            
+		// 	patternContentUnits = "objectBoundingBox">
+		// 		<image x="0" y="0" height=1 width=1 href="images/edd.jpg"></image>
+		// 	</pattern>
+		// 	</defs>
+		// 	<circle cx="150" cy="50" r="40" fill="url(#test)" />
+		// </svg>
+
+		//create patterns for circles
+		// defs.selectAll(".baker-pattern")
+		// .data(datapoints)
+		// .enter().append("pattern")
+		// .attr("class", "baker-pattern")
+		// .attr("id",function(d) {
+		// 	return d.baker.toLowerCase()
+		// })
+		// .attr("height","100%")
+		// .attr("width","100%")
+		// .attr("patternContentUnits","objectBoundingBox")
+		// .append("image") //image in the pattern
+		// .attr("height",1)
+		// .attr("width",1)
+		// .attr("preserveAspectRatio","none")
+		// .attr("xmlns:xlink","http://www.w3.org/1999/xlink")
+		// .attr("xlink:href",function(d){
+		// 	return d.image_path
+		// });
+
+		// example html
+		// <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+		// viewBox="0 0 500 500">
+		// <g id="UrTavla">
+		// 	<circle style="fill:url(#toning);stroke:#010101;stroke-width:1.6871;stroke-miterlimit:10;" cx="250" cy="250" r="245">
+		// 	</circle>
+		// 	<text x="50%" y="50%" text-anchor="middle" stroke="#51c5cf" stroke-width="2px" dy=".3em">Look, I’m centered!Look, I’m centered!</text>
+		// </g>
+		// </svg>
+
+		//draw circles
+		// var circles = svg.selectAll(".artist")
+		// 	.data(datapoints)
+		// 	.enter().append("circle")
+		// 	.attr("class","artist")
+		// 	.attr("r",function(d){
+		// 		return radiusScale(d.followers)
+		// 	})
+		// 	.attr("fill",function(d){
+		// 		return "url(#" + d.baker.toLowerCase() +")"
+		// 	})
+		// 	.attr("stroke","black")
+		
+		// var labels = circles.append("text")
+		// .text(function(d) {return d.baker})
+		// .attr("opacity",1)
+		// .attr("fontsize",15)
+
+		// circles.on("mouseover",
+		// function mouseOver(d) {
+		// 	d3.select(this).attr("opacity",0.5)
+		// 	d3.select(this.parentNode)
+		// 	  .append("text")//appending it to path's parent
+        //       .attr("dx", "6") // margin
+        //       .attr("dy", ".35em") // vertical-align
+        //       .attr("class", "mylabel")//adding a label class
+        //       .text(function() {
+        //         return d.baker;
+        //       });
+		//   })
+		//   .on("mouseout", function mouseOut() {
+		// 	d3.select(this).attr("opacity",1)
+		// 	d3.selectAll(".mylabel").remove()//this will remove the text on mouse out
+		//   })
+
+
+		// simulation.nodes(datapoints)
+		// 	.on("tick",ticked)
+
+		// function ticked(){
+		// 	circles.
+		// 		attr("cx",function(d){
+		// 			return d.x
+		// 		})
+		// 		.attr("cy", function(d){
+		// 			return d.y
+		// 		})
+		// }
 	}
 
 }
