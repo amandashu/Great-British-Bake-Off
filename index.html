@@ -7,26 +7,40 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 	<title>Great British Bake Off Data Viz</title>
 	<link href="./styles/style.css" rel="stylesheet" />
-	
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
 	<script src="https://github.highcharts.com/master/highcharts.js"></script>
 	<script src="https://github.highcharts.com/master/highcharts-more.js"></script>
 	<script src="https://code.highcharts.com/modules/wordcloud.js"></script>
 	<script src="https://github.highcharts.com/master/modules/exporting.js"></script>
 	
 </head>
-
+<div class="w3-top">
+	<div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+	  <a href="#home" class="w3-bar-item w3-button">Gourmet au Catering</a>
+	  <!-- Right-sided navbar links. Hide them on small screens -->
+	  <div class="w3-right w3-hide-small">
+		<a href="#about" class="w3-bar-item w3-button">About</a>
+		<a href="#menu" class="w3-bar-item w3-button">Menu</a>
+		<a href="#contact" class="w3-bar-item w3-button">Contact</a>
+	  </div>
+	</div>
+  </div>
+  
 <body>
-	<header>
-
-		<img src="./images/left_bakes.png" alt="bake drawings on the left of logo" height="150" width="400"/>
-		<img src="./images/gbbo_logo.png" alt="Great British Bake Off Logo" height="175" width="400"/>
-		<img src="./images/right_bakes.png" alt="bake drawings on the right of logo" height="150" width="400"/>
+	<header class='header-container'>
+		<div class = "header-item">
+			<img id = "left-bake" class = "header-bakes" src="./images/left_bakes.png" alt="bake drawings on the left of logo" height="130"/>
+		</div>
+		<div class = "header-item">
+			<img src="./images/gbbo_logo.png" alt="Great British Bake Off Logo" height="175"/>
+		</div>
+		<div class = "header-item">
+			<img id = "right-bake" class = "header-bakes" src="./images/right_bakes.png" alt="bake drawings on the right of logo" height="130"/>
+		</div>
 	</header>	
 
-	<section>
-		<div id="myBubbleChart"></div>
-	</section>
-
+	<hr>
 	<section class="parent--container">
 		<section id="myLine" class="container"></section>
 		<section class="container">
@@ -35,11 +49,11 @@
 	</section>
 
 	<section class="parent--container">
-		<section id="myAgePie" class="container"></section>
-		<section id="myGenderPie" class="container"></section>
 		<section class="container">
 			<p> some text</p>
 		</section>
+		<section id="myAgePie" class="container"></section>
+		<section id="myGenderPie" class="container"></section>
 	</section>
 
 
@@ -48,6 +62,10 @@
 		<section class="container">
 			<p> some text</p>
 		</section>
+	</section>
+
+	<section>
+		<div id="myBubbleChart"></div>
 	</section>
 
 	<section class="parent--container">
