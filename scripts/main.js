@@ -1,5 +1,11 @@
-var bcolor = '#eaf1f8'
-
+var bcolor = '#f5f0eb'
+var tcolor = 'rgb(49, 47, 47)'
+var font = "Verdana"
+var red = "#F13C20"
+var green = "#6e6e30"
+var gold = "#D79922"
+var blue = "#4056A1"
+var lightblue = "#C5CBE3"
 
 
 Highcharts.chart('testbubble', {
@@ -61,22 +67,33 @@ function plotLine() {
 	let line = Highcharts.chart('myLine', {
 		chart: {
 			type: "line",
-			backgroundColor: bcolor
+			backgroundColor: bcolor,
+			style: {
+				fontFamily: font,
+				color: tcolor
+			}
 		},
 		title: {
-			text: 'Average Viewership Within 7 Days',
+			text: 'Viewership: Series 1-10',
 			style: {
-				fontWeight:'bold',
+				fontWeight:'normal',
+			}
+		},
+		subtitle: {
+			text: "Average 7 day viewership numbers for each series",
+			style: {
+				color: blue
 			}
 		},
 		xAxis: {
 			// categories: ['January','February','March'],
 			title: {
-				text: "Series",
+				text: "Series #",
 				style: {
 					fontWeight:'bold',
 				}
 			},
+			gridLineColor: lightblue,
 		},
 		yAxis: {
 			min: 0,
@@ -86,19 +103,21 @@ function plotLine() {
 				style: {
 					fontWeight:'bold',
 				}
-			},
+			},			
+			gridLineColor: lightblue,
 		},
 		legend: false,
 		credits: {
 			enabled: false
 		},
 		series: [{
-             data: viewers['data']
+			 data: viewers['data'],
         }],
 		tooltip: { enabled: false },
 		plotOptions:{
 			series: {
-				animation: false
+				animation: false,
+				color: red
 			}
         },
         exporting: {
@@ -111,7 +130,11 @@ function plotAgePie() {
 	var pie = Highcharts.chart('myAgePie', {
 		chart: {
 			type: "pie",
-			backgroundColor: bcolor
+			backgroundColor: bcolor,
+			style: {
+				fontFamily: font,
+				color: tcolor
+			}
 		},
 		title: {
 			text: 'Age',
@@ -177,7 +200,11 @@ function plotGenderPie() {
 	var pie = Highcharts.chart('myGenderPie', {
 		chart: {
 			type: "pie",
-			backgroundColor: bcolor
+			backgroundColor: bcolor,
+			style: {
+				fontFamily: font,
+				color: tcolor
+			}
 		},
 		title: {
 			text: 'Gender',
@@ -236,7 +263,11 @@ function plotGenderPie() {
 function plotWordCloud(){
     let myWordCloud = Highcharts.chart('myWordCloud', {
 		chart: {
-			backgroundColor: bcolor
+			backgroundColor: bcolor,
+			style: {
+				fontFamily: font,
+				color: tcolor
+			}
 		},
         accessibility: {
             screenReaderSection: {
@@ -420,7 +451,11 @@ function plotStackColumn(){
         chart: {
             type: 'column',
 			animation: false,
-			backgroundColor: bcolor
+			backgroundColor: bcolor,
+			style: {
+				fontFamily: font,
+				color: tcolor
+			}
         },
         // title: {
         //     // text: 'Stacked column chart'
