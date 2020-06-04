@@ -1,5 +1,62 @@
 var bcolor = '#eaf1f8'
 
+
+
+Highcharts.chart('testbubble', {
+    chart: {
+        type: 'packedbubble',
+        height: '100%'
+    },
+    title: {
+        text: 'Carbon emissions around the world (2014)'
+    },
+    tooltip: {
+        useHTML: true,
+        pointFormat: '<b>{point.name}:</b> {point.value}m CO<sub>2</sub>'
+    },
+    plotOptions: {
+        packedbubble: {
+            minSize: '30%',
+            maxSize: '120%',
+            zMin: 0,
+            zMax: 1000,
+            layoutAlgorithm: {
+                splitSeries: false,
+                gravitationalConstant: 0.02
+            },
+            dataLabels: {
+                enabled: true,
+                format: '{point.name}',
+                filter: {
+                    property: 'y',
+                    operator: '>',
+                    value: 250
+                },
+                style: {
+                    color: 'black',
+                    textOutline: 'none',
+                    fontWeight: 'normal'
+                }
+            }
+        }
+    },
+    series: [
+		{data: [{
+			name: 'A',
+			value: 1,
+		    color: {
+			pattern: {
+			image: "images/bakers/frances.jpg",
+			aspectRatio: 0.6
+			}
+			}
+		},
+	{name: 'B', value:2}]
+	}]
+});
+
+
+
 function plotLine() {
 	let line = Highcharts.chart('myLine', {
 		chart: {
@@ -80,7 +137,13 @@ function plotAgePie() {
 			},
 			marker: {
 				enabled: true
-			}
+			},
+			// color: {
+			// 	pattern: {
+			// 		image:,
+			// 		aspectRatio: 9/4
+			// 	}
+			// },
 		}],
 		plotOptions: {
 			pie: {
@@ -88,7 +151,7 @@ function plotAgePie() {
 				startAngle: 90
 			},
 			series: {
-				animation: false
+				animation: false,
 			}
 		},
 		tooltip: { enabled: false },
@@ -231,17 +294,17 @@ function plotBubble(){
 		.attr("transform","translate(" + width/2 + "," + height/2 +")") // translate to center
 
 	var defs = svg.append("defs") // add defs in svg
-	defs.append("pattern") //add pattern in defs
-		.attr("id","test")
-		.attr("height","100%")
-		.attr("weight","100%")
-		.attr("patternContentUnits","objectBoundingBox")
-		.append("image") //image in the pattern
-		.attr("height",1)
-		.attr("width",1)
-		.attr("preserveAspectRatio","none")
-		.attr("xmlns:xlink","http://www.w3.org/1999/xlink")
-		.attr("xlink:href","images/frances.jpg");
+	// defs.append("pattern") //add pattern in defs
+	// 	.attr("id","test")
+	// 	.attr("height","100%")
+	// 	.attr("weight","100%")
+	// 	.attr("patternContentUnits","objectBoundingBox")
+	// 	.append("image") //image in the pattern
+	// 	.attr("height",1)
+	// 	.attr("width",1)
+	// 	.attr("preserveAspectRatio","none")
+	// 	.attr("xmlns:xlink","http://www.w3.org/1999/xlink")
+	// 	.attr("xlink:href","images/frances.jpg");
 
 
 	var radiusScale = d3.scaleSqrt()
@@ -315,7 +378,7 @@ function plotBubble(){
 				.attr("dy",".3em")
 				// .attr("fontsize","50%")
 				.attr("opacity",0)
-				.text(function(d) {return "Series " + d.series + " Winner"})
+				.text(function(d) {return "S" + d.series + " Winner"})
 
 		g.on("mouseover",
 		function mouseOver(d) {

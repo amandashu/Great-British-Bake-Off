@@ -3,38 +3,70 @@
 } */
 
 html {
-    margin: 10px;
+    /* margin: 20px; */
     /* padding: 50px; */
-    padding-top: 10px;
+    /* padding-top: 10px; */
+    /* border: red solid 1px; */
 }
-/* 
-.header-container *{
-    border: black solid 1px;
+
+
+/* div {
+    border: blue solid 1px;
+}
+
+section {
+    border: green solid 1px
 } */
 
+/*top bar elements*/
+#topbar { 
+    position:fixed;
+    width:100%;
+    z-index:1; /*stack on top*/
+    top: 0px; /*set top position*/
+    background-color:  #eaf1f8;
+    
+}
+
+.topbar-button {
+    text-decoration: none;
+    cursor: pointer;
+    float:left;
+    padding:8px 16px
+}
+
+#topbar-right{
+    float:right!important
+}
+
+.topbar-button:hover{
+    color:#000!important;
+    background-color:#ccc!important
+}
+
+/*header elements*/
 .header-container img {
     width: 100%;
 }
 
-.header-bakes {
-    margin-top: 40px; /*move images up and down */
-    padding-top: 25px; /*change vertical scaling of image*/
-}
-
 #left-bake { 
     padding-left: 50px; /*change space on left of image*/
+    margin-top: 40px; /*move images up and down*/
+    padding-top: 15px; /*change vertical scaling of image*/
 }
 
 #right-bake { 
     padding-right: 50px; /*change space on right of image*/
+    margin-top: 40px; /*move images up and down*/
+    padding-top: 20px; /*change vertical scaling of image*/
 }
 
 .header-container {
-    background-color: #eaf1f8;
+    background-color: #e7e5dd;
     display: flex;
     width: 100%; 
     text-align: center;
-    margin-top: 50px;
+    margin-top:38px;
     margin-bottom: 50px;
     padding-bottom: 0px;
 }
@@ -42,6 +74,13 @@ html {
 .header-item {
     float: right;
     width:33%;
+}
+
+/*main content*/
+#content {
+    padding-left:70px;
+    padding-right:70px
+
 }
 
 .parent--container {

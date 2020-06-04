@@ -1,10 +1,20 @@
 [
 {
 "name": "F",
-"y": 0.5166666667
+"y": 0.5166666667,
+"color": {
+"pattern": {
+"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/United_States_one_dollar_bill%2C_obverse.jpg/320px-United_States_one_dollar_bill%2C_obverse.jpg"
+}
+}
 },
 {
 "name": "M",
-"y": 0.4833333333
+"y": 0.4833333333,
+"color": {
+"pattern": {
+"image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/United_States_one_dollar_bill%2C_obverse.jpg/320px-United_States_one_dollar_bill%2C_obverse.jpg"
+}
+}
 }
 ]
