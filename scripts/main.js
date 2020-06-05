@@ -1,66 +1,15 @@
-var bcolor = '#f5f0eb'
-var tcolor = 'rgb(49, 47, 47)'
-var font = "Verdana"
-var red = "#F13C20"
-var green = "#6e6e30"
-var gold = "#D79922"
-var blue = "#4056A1"
-var lightblue = "#C5CBE3"
-
-
-Highcharts.chart('testbubble', {
-    chart: {
-        type: 'packedbubble',
-        height: '100%'
-    },
-    title: {
-        text: 'Carbon emissions around the world (2014)'
-    },
-    tooltip: {
-        useHTML: true,
-        pointFormat: '<b>{point.name}:</b> {point.value}m CO<sub>2</sub>'
-    },
-    plotOptions: {
-        packedbubble: {
-            minSize: '30%',
-            maxSize: '120%',
-            zMin: 0,
-            zMax: 1000,
-            layoutAlgorithm: {
-                splitSeries: false,
-                gravitationalConstant: 0.02
-            },
-            dataLabels: {
-                enabled: true,
-                format: '{point.name}',
-                filter: {
-                    property: 'y',
-                    operator: '>',
-                    value: 250
-                },
-                style: {
-                    color: 'black',
-                    textOutline: 'none',
-                    fontWeight: 'normal'
-                }
-            }
-        }
-    },
-    series: [
-		{data: [{
-			name: 'A',
-			value: 1,
-		    color: {
-			pattern: {
-			image: "images/bakers/frances.jpg",
-			aspectRatio: 0.6
-			}
-			}
-		},
-	{name: 'B', value:2}]
-	}]
-});
-
+// color definitions
+var bcolor = '#f5f0eb';
+var tcolor = 'rgb(49, 47, 47)';
+var font = "Verdana";
+var red = "#F13C20";
+var green = "#6e6e30";
+var darkgreen = "#585826"
+var gold = "#D79922";
+var lightgold = "#EFE2BA"
+var blue = "#4056A1";
+var lightblue = "#C5CBE3";
+var maroon = "#400303";
 
 
 function plotLine() {
@@ -93,7 +42,6 @@ function plotLine() {
 					fontWeight:'bold',
 				}
 			},
-			gridLineColor: lightblue,
 		},
 		yAxis: {
 			min: 0,
@@ -104,7 +52,7 @@ function plotLine() {
 					fontWeight:'bold',
 				}
 			},			
-			gridLineColor: lightblue,
+			gridLineColor: lightgold,
 		},
 		legend: false,
 		credits: {
@@ -127,6 +75,10 @@ function plotLine() {
 }
 
 function plotAgePie() {
+	colors = [darkgreen, maroon,gold,blue]
+	for (i in ages) {
+		ages[i]['color'] = colors[i]
+	}
 	var pie = Highcharts.chart('myAgePie', {
 		chart: {
 			type: "pie",
@@ -139,7 +91,7 @@ function plotAgePie() {
 		title: {
 			text: 'Age',
 			style: {
-				fontWeight:'bold',
+				// fontWeight:'bold',
 			}
 		},
 		credits: {
@@ -154,7 +106,7 @@ function plotAgePie() {
 				color:  '#FFFFFF',
 				borderColor: '#FFFFFF',
 				style: {
-					fontSize: "14px",
+					fontSize: "8px",
 					textOutline: false
 				}
 			},
@@ -179,16 +131,7 @@ function plotAgePie() {
 		},
 		tooltip: { enabled: false },
 		legend: {
-			layout: 'vertical',
-			align: 'right',
-			verticalAlign: 'top',
-			x: 0,
-			y: 30,
-			floating: true,
-			borderWidth: 1,
-			backgroundColor:'#FFFFFF',
-			borderColor: '#FFFFFF',
-			symbolRadius: 0
+			enabled: true
         },
         exporting: {
             enabled: false
@@ -197,6 +140,10 @@ function plotAgePie() {
 }
 
 function plotGenderPie() {
+	colors = [blue,red]
+	for (i in gender) {
+		gender[i]['color'] = colors[i]
+	}
 	var pie = Highcharts.chart('myGenderPie', {
 		chart: {
 			type: "pie",
@@ -209,7 +156,7 @@ function plotGenderPie() {
 		title: {
 			text: 'Gender',
 			style: {
-				fontWeight:'bold',
+				// fontWeight:'bold',
 			}
 		},
 		credits: {
@@ -243,16 +190,7 @@ function plotGenderPie() {
 		},
 		tooltip: { enabled: false },
 		legend: {
-			layout: 'vertical',
-			align: 'right',
-			verticalAlign: 'top',
-			x: 0,
-			y: 30,
-			floating: true,
-			borderWidth: 1,
-			backgroundColor:'#FFFFFF',
-			borderColor: '#FFFFFF',
-			symbolRadius: 0
+			enabled: true
         },
         exporting: {
             enabled: false
@@ -267,7 +205,9 @@ function plotWordCloud(){
 			style: {
 				fontFamily: font,
 				color: tcolor
-			}
+			},
+			marginLeft: 100,
+			marginRight:100
 		},
         accessibility: {
             screenReaderSection: {
@@ -295,23 +235,20 @@ function plotWordCloud(){
                 "fontFamily":"sans-serif", 
                 "fontWeight": "900"},
             maxFontSize: 80,
-            minFontSize: 10,
+			minFontSize: 14,
+			colors: [blue,red, darkgreen,green,gold,lightblue]
         }],
         tooltip: {
-            enabled: false
+			headerFormat:null,
+			pointFormat:'{point.name}' + ": " + "{point.weight}" + " occurrences",
+            enabled: true
         },
         exporting: {
             enabled: false
-          }
-        // title: {
-        //     text: 'Wordcloud of Bake Descriptions'
-        // },
-        // dataLabels: {
-        //     enabled: true,
-        //     allowOverlap: true,
-        //     padding:0,
-        //     shape: 'circle'
-        // }
+          },
+        title: {
+            text: 'Wordcloud of Bake Descriptions'
+        },
     });
 }
 
@@ -324,19 +261,7 @@ function plotBubble(){
 		.append('g')
 		.attr("transform","translate(" + width/2 + "," + height/2 +")") // translate to center
 
-	var defs = svg.append("defs") // add defs in svg
-	// defs.append("pattern") //add pattern in defs
-	// 	.attr("id","test")
-	// 	.attr("height","100%")
-	// 	.attr("weight","100%")
-	// 	.attr("patternContentUnits","objectBoundingBox")
-	// 	.append("image") //image in the pattern
-	// 	.attr("height",1)
-	// 	.attr("width",1)
-	// 	.attr("preserveAspectRatio","none")
-	// 	.attr("xmlns:xlink","http://www.w3.org/1999/xlink")
-	// 	.attr("xlink:href","images/frances.jpg");
-
+	var defs = svg.append("defs")
 
 	var radiusScale = d3.scaleSqrt()
 		.domain([1,500]) //domain of data
@@ -557,4 +482,25 @@ function init() {
 
 document.addEventListener('DOMContentLoaded', init, false);
 
+
+function viewershipmore() {
+	// let button = document.getElementById("viewership-more-button")
+	// let div = document.getElementById("viewership-more")
+	// console.log(div)
+	// if (div.display =='none'){
+	// 	div.display = 'visible'
+	// } else {
+	// 	div.style.display = 'visible'
+	// }
+	var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    } 
+
+
+}
+
+document.getElementById("viewership-more-button").addEventListener("click", viewershipmore);
 

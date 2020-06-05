@@ -38,10 +38,12 @@ h1 {
 }
 
 
-hr {border:0;
+hr {
+    border:0;
     /* border-top:1px solid rgb(224, 221, 221); */
-    border-top:1px solid #6e6e30;
-    margin:20px 0}
+    border-top:1px solid rgb(49, 47, 47);
+    margin:20px 0
+}
 
 /*TOP BAR ELEMENTS*/
 #topbar { 
@@ -98,7 +100,7 @@ hr {border:0;
     display: flex;
     width: 100%; 
     text-align: center;
-    margin-top:35px;
+    margin-top:38px;
     margin-bottom: 50px;
     padding-bottom: 0px;
 }
@@ -139,4 +141,38 @@ hr {border:0;
     text-align: center;
     padding-left: 100px;
     padding-right: 100px
+}
+
+#viewership-more-button {
+    width: 80%;
+    border: 0px
+}
+
+#viewership-more-button:hover {
+    background-color: #4056A1;
+    color: white;
+
+}
+
+#viewership-more {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #f5f0eb;
+  }
+
+.arrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+  }
+
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+  }
+
+.gold {
+    color:#D79922;
 }

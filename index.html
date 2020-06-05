@@ -7,8 +7,6 @@
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 		<title>Great British Bake Off Data Viz</title>
 		<link href="./styles/style.css" rel="stylesheet" />
-		<!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
-
 		<script src="https://github.highcharts.com/master/highcharts.js"></script>
 		<script src="https://github.highcharts.com/master/highcharts-more.js"></script>
 		<script src="https://code.highcharts.com/modules/pattern-fill.js"></script>
@@ -44,11 +42,10 @@
 			<section id="about">
 				<h1>About</h1><br>
 				<div class="description">
-					<p>The Great British Bake Off is a British television baking competition
-						lorem ipsum dolor sit amet, consectetur adipiscing elit consectetur adipiscing elit, 
-						sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis 
-						nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute iruredolor 
-						in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+					<p>The <i>Great British Bake Off (GBBO)</i> is a British television baking competitions
+						12 amateur bakers compete against each other over the course of twelve weeks. Each week, a theme 
+						is assigned (i.e. Pastry Week) and the contestants bake to impress the judges in the Signature, 
+						Technical, and Show Stopper rounds.
 					</p>
 				</div>
 			</section>
@@ -56,11 +53,22 @@
 			<section class="parent--container">
 				<section id="myLine" class="container"></section>
 				<div class="container description">
-					<p> baking competitionlorem ipsum dolor sit amet, consectetur adipiscing elit consectetur adipiscing elit, 
-						sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis 
-						nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+					<p> Viewership for GBBO increases continuously until series 8, where it drops and plateaus thereafter. 
+						<em class="gold">Why did the ratings drop almost 6 million?</em> After series 7, the GBBO moved from BBC One to Channel 4, and 
+						previous judge Mary Berry and presenters Mel Giedroyc and Sue Perkins out of loyalty to BBC. Some
+						viewers were also disappointed about the move since the show would now include advertisements.
 					</p>				
+					<button id="viewership-more-button"><p>Read More<br><em class="arrow down"></em></p>
+					</button>		
+						<div id="viewership-more">
+							<p> baking competitionlorem ipsum dolor sit amet, consectetur adipiscing elit consectetur adipiscing elit, 
+							sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis 
+							nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+						</p>
+						<p>https://metro.co.uk/2017/08/29/a-timeline-of-the-dramatic-developments-that-led-to-the-rebirth-of-the-great-british-bake-off-on-channel-4-6887039/</p>
+					</div>				
 				</div>
+
 			</section>
 		
 			<hr>
@@ -80,12 +88,6 @@
 		
 			<section class="parent--container">
 				<section id="myWordCloud" class="container"></section>
-				<div class="container description">
-					<p> baking competitionlorem ipsum dolor sit amet, consectetur adipiscing elit consectetur adipiscing elit, 
-						sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis 
-						nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-					</p>				
-				</div>
 			</section>
 
 			<hr>
@@ -108,7 +110,6 @@
 		
 		</div>
 		<hr />
-		<section id="testbubble" class="container"></section>
 
 
 		<script src="//d3js.org/d3.v4.min.js"></script>
