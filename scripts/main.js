@@ -451,9 +451,9 @@ function plotStackColumn(){
 				color: blue
 			}
         },
-        // title: {
-        //     // text: 'Stacked column chart'
-        // },
+        title: {
+            text: 'Recognitions for Each Winner'
+        },
         xAxis: {
             categories: winnerStats['bakers']
         },
@@ -477,11 +477,7 @@ function plotStackColumn(){
 			enabled: false
 		},
         legend: {
-            align: 'center',
-            verticalAlign: 'bottom',
-            backgroundColor:
-                Highcharts.defaultOptions.legend.backgroundColor || 'white',
-            shadow: false
+			enabled: true,
         },
         tooltip: {
             headerFormat: '<b>{point.x}</b><br/>',
