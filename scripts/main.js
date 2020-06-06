@@ -1,17 +1,60 @@
-// color definitions
-var bcolor = '#f5f0eb';
-var tcolor = 'rgb(49, 47, 47)';
+/*COLOR SCHEME*/
+// definitions
+var bcolor = '#f0e3e3';
 var font = "Verdana";
-var red = "#F13C20";
-var green = "#6e6e30";
-var darkgreen = "#585826"
-var gold = "#D79922";
-var lightgold = "#EFE2BA"
-var blue = "#4056A1";
-var lightblue = "#C5CBE3";
-var maroon = "#400303";
+var blue = '#123C69';
+var skyblue = '#01a6ec';
+var lightblue = '#adc3cc'
+var grey = '#BAB2B5';
+var pink = "#AC3B61";
+
+// background color
+document.querySelector('html').style.backgroundColor =  bcolor;
+document.getElementById('topbar').style.backgroundColor = pink
+document.getElementById('viewership-more').style.backgroundColor = bcolor
+
+// text color
+document.querySelector('body').style.color = blue
+
+// top bar color
+document.querySelectorAll('.topbar-button').forEach(e => {
+	console.log(e)
+	e.style.backgroundColor = pink
+	e.style.color = 'white'
+})
+
+// hr elements color
+document.querySelectorAll('hr').forEach(e => {
+	e.style.borderTop = '1px solid ' + lightblue
+})
+
+// em-text elements color
+document.querySelectorAll('.em-text').forEach(e => {
+	e.style.color = skyblue
+})
+
+// viewership-more-button
+var vmButton = document.getElementById("viewership-more-button")
+vmButton.style.backgroundColor = bcolor;
+vmButton.style.color = skyblue;
+function hovercolor(x){
+	return function(){
+		vmButton.style.backgroundColor = x
+	}
+}
+vmButton.addEventListener("mouseover", hovercolor(lightblue));
+vmButton.addEventListener("mouseout", hovercolor(bcolor));
+let arr = document.querySelector(".arrow")
+arr.style.border= "solid " + skyblue;
+arr.style.borderWidth= '0 3px 3px 0';
+
+// target=_blank for all a tags
+document.querySelectorAll('a').forEach(e => {
+  e.target = '_blank';
+})
 
 
+/*FUNCTION DEFINITIONS*/
 function plotLine() {
 	let line = Highcharts.chart('myLine', {
 		chart: {
@@ -19,13 +62,14 @@ function plotLine() {
 			backgroundColor: bcolor,
 			style: {
 				fontFamily: font,
-				color: tcolor
+				color: grey
 			}
 		},
 		title: {
 			text: 'Viewership: Series 1-10',
 			style: {
 				fontWeight:'normal',
+				color: blue,
 			}
 		},
 		subtitle: {
@@ -42,6 +86,7 @@ function plotLine() {
 					fontWeight:'bold',
 				}
 			},
+			lineColor: lightblue
 		},
 		yAxis: {
 			min: 0,
@@ -52,7 +97,7 @@ function plotLine() {
 					fontWeight:'bold',
 				}
 			},			
-			gridLineColor: lightgold,
+			gridLineColor: lightblue
 		},
 		legend: false,
 		credits: {
@@ -65,7 +110,7 @@ function plotLine() {
 		plotOptions:{
 			series: {
 				animation: false,
-				color: red
+				color: pink
 			}
         },
         exporting: {
@@ -484,14 +529,6 @@ document.addEventListener('DOMContentLoaded', init, false);
 
 
 function viewershipmore() {
-	// let button = document.getElementById("viewership-more-button")
-	// let div = document.getElementById("viewership-more")
-	// console.log(div)
-	// if (div.display =='none'){
-	// 	div.display = 'visible'
-	// } else {
-	// 	div.style.display = 'visible'
-	// }
 	var content = this.nextElementSibling;
     if (content.style.maxHeight){
       content.style.maxHeight = null;

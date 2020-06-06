@@ -18,15 +18,14 @@ html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
 html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
 body{margin:0}
 html{overflow-x:hidden}
-html > *  {
-    /* background-color:  #ececec; */
-    background-color:  #f5f0eb;
-}
+/* html {
+    background-color: #f0e3e3;
+} */
 
-/*FONTS/GENERAL STYLING*/
+/*FONTS AND GENERAL STYLING*/
 body {
     font-family: Verdana;
-    color:rgb(49, 47, 47);
+    /* color:rgb(49, 47, 47); */
 }
 
 h1 {
@@ -34,15 +33,20 @@ h1 {
     letter-spacing: 5px;
     font-weight: normal;
     font-size:36px;
-    color:rgb(49, 47, 47);
+    /* color:rgb(49, 47, 47); */
 }
 
 
 hr {
     border:0;
     /* border-top:1px solid rgb(224, 221, 221); */
-    border-top:1px solid rgb(49, 47, 47);
+    /* border-top:1px solid rgb(49, 47, 47); */
     margin:20px 0
+}
+
+
+a{
+    text-decoration: none;
 }
 
 /*TOP BAR ELEMENTS*/
@@ -52,7 +56,7 @@ hr {
     z-index:1; /*stack on top*/
     top: 0px; /*set top position*/
     /* background-color:  #bccbde; */
-    background-color: #4056A1;    
+    /* background-color: #AC3B6a;     */
 }
 
 .topbar-button {
@@ -61,9 +65,8 @@ hr {
     float:left;
     padding:8px 16px;
     /* color: #00303f; */
-    color: white;
-    /* background-color: #bccbde; */
-    background-color: #4056A1;
+    /* color: white; */
+    /* background-color: #AC3B6a; */
     font-family:Verdana;
     letter-spacing: 1px
 }
@@ -78,7 +81,7 @@ hr {
     background-color:#ccc!important
 }
 
-/*header elements*/
+/*HEADER ELEMENTS*/
 .header-container img {
     width: 100%;
 }
@@ -110,7 +113,7 @@ hr {
     width:33%;
 }
 
-/*main content*/
+/*MAIN CONTENT*/
 
 #content {
     padding-left:120px;
@@ -148,22 +151,21 @@ hr {
     border: 0px
 }
 
-#viewership-more-button:hover {
+/* #viewership-more-button:hover {
     background-color: #4056A1;
     color: white;
-
-}
+} */
 
 #viewership-more {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
-    background-color: #f5f0eb;
+    /* background-color: white; */
   }
 
 .arrow {
-    border: solid black;
-    border-width: 0 3px 3px 0;
+    /* border: solid black;
+    border-width: 0 3px 3px 0; */
     display: inline-block;
     padding: 3px;
   }
@@ -172,7 +174,3 @@ hr {
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
   }
-
-.gold {
-    color:#D79922;
-}
