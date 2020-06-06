@@ -4,9 +4,11 @@ var bcolor = '#f0e3e3';
 var font = "Verdana";
 var blue = '#123C69';
 var skyblue = '#01a6ec';
+var lightskyblue = '#88cbe7';
 var lightblue = '#adc3cc'
 var grey = '#BAB2B5';
 var pink = "#AC3B61";
+var purple = 'rgb(85, 25, 85)';
 
 // background color
 document.querySelector('html').style.backgroundColor =  bcolor;
@@ -15,10 +17,12 @@ document.getElementById('viewership-more').style.backgroundColor = bcolor
 
 // text color
 document.querySelector('body').style.color = blue
+document.querySelectorAll('#viewership-more a').forEach(e => {
+	e.style.color = blue
+})
 
 // top bar color
 document.querySelectorAll('.topbar-button').forEach(e => {
-	console.log(e)
 	e.style.backgroundColor = pink
 	e.style.color = 'white'
 })
@@ -28,8 +32,8 @@ document.querySelectorAll('hr').forEach(e => {
 	e.style.borderTop = '1px solid ' + lightblue
 })
 
-// em-text elements color
-document.querySelectorAll('.em-text').forEach(e => {
+// text-emphasis elements color
+document.querySelectorAll('.text-emphasis').forEach(e => {
 	e.style.color = skyblue
 })
 
@@ -79,7 +83,6 @@ function plotLine() {
 			}
 		},
 		xAxis: {
-			// categories: ['January','February','March'],
 			title: {
 				text: "Series #",
 				style: {
@@ -120,7 +123,7 @@ function plotLine() {
 }
 
 function plotAgePie() {
-	colors = [darkgreen, maroon,gold,blue]
+	colors = [lightskyblue, purple, blue, pink]
 	for (i in ages) {
 		ages[i]['color'] = colors[i]
 	}
@@ -130,13 +133,16 @@ function plotAgePie() {
 			backgroundColor: bcolor,
 			style: {
 				fontFamily: font,
-				color: tcolor
+				color: blue
 			}
 		},
 		title: {
 			text: 'Age',
 			style: {
 				// fontWeight:'bold',
+			},
+			style: {
+				color:blue
 			}
 		},
 		credits: {
@@ -185,7 +191,7 @@ function plotAgePie() {
 }
 
 function plotGenderPie() {
-	colors = [blue,red]
+	colors = [lightskyblue,pink]
 	for (i in gender) {
 		gender[i]['color'] = colors[i]
 	}
@@ -195,13 +201,16 @@ function plotGenderPie() {
 			backgroundColor: bcolor,
 			style: {
 				fontFamily: font,
-				color: tcolor
+				color: blue
 			}
 		},
 		title: {
 			text: 'Gender',
 			style: {
 				// fontWeight:'bold',
+			},
+			style: {
+				color:blue
 			}
 		},
 		credits: {
@@ -249,7 +258,7 @@ function plotWordCloud(){
 			backgroundColor: bcolor,
 			style: {
 				fontFamily: font,
-				color: tcolor
+				color: blue
 			},
 			marginLeft: 100,
 			marginRight:100
@@ -281,7 +290,7 @@ function plotWordCloud(){
                 "fontWeight": "900"},
             maxFontSize: 80,
 			minFontSize: 14,
-			colors: [blue,red, darkgreen,green,gold,lightblue]
+			colors: [blue,purple,pink,skyblue, lightblue]
         }],
         tooltip: {
 			headerFormat:null,
@@ -290,19 +299,34 @@ function plotWordCloud(){
         },
         exporting: {
             enabled: false
-          },
-        title: {
-            text: 'Wordcloud of Bake Descriptions'
+		  },
+		title: {
+			text: 'What do the bakers bake?',
+			style: {
+				fontFamily: 'Verdana',
+				color: blue,
+				fontSize: 30
+			}
+        },
+        subtitle: {
+			text: 'A wordcloud of bake descriptions.',
+			style: {
+				fontFamily: 'Verdana',
+				color: blue,
+				fontSize: 14
+			}
         },
     });
 }
 
 function plotBubble(){
-	var width = 500, height = 500;
+	var width = 600, height = 600;
 	var svg = d3.select('#myBubbleChart')
 		.append('svg')
-		.attr('height', height)
-		.attr('width',width)
+		.attr('id','bubble-svg')
+		.attr("width",'100%').attr("height","100%")
+		.attr("preserveAspectRatio", "xMinYMin meet")
+		.attr('viewBox', '75 75 ' + (width-150) + ' ' + (height-150))
 		.append('g')
 		.attr("transform","translate(" + width/2 + "," + height/2 +")") // translate to center
 
@@ -424,7 +448,7 @@ function plotStackColumn(){
 			backgroundColor: bcolor,
 			style: {
 				fontFamily: font,
-				color: tcolor
+				color: blue
 			}
         },
         // title: {
@@ -540,4 +564,3 @@ function viewershipmore() {
 }
 
 document.getElementById("viewership-more-button").addEventListener("click", viewershipmore);
-

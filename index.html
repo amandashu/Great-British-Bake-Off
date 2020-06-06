@@ -39,7 +39,7 @@
 
 	<body style="max-width:1300px; margin:auto;">
 		<div id="content">
-			<section id="about">
+			<section class="center">
 				<h1>About</h1><br>
 				<div class="description">
 					<p>The <i>Great British Bake Off (GBBO)</i> is a British television baking competitions
@@ -49,31 +49,37 @@
 					</p>
 				</div>
 			</section>
+			
+			<hr>
 
 			<section class="parent--container">
-				<section id="myLine" class="container"></section>
-				<div class="container description">
+				<section id="myLine" class="graph-container"></section>
+				<div class="word-container description">
+					<h1>Show Popularity</h1>
 					<p> Viewership for GBBO increases continuously until series 8, where it drops and plateaus thereafter. 
-						<em class="em-text">Why did the ratings drop almost 6 million?</em> After series 7, the GBBO moved from BBC One to Channel 4, and 
+						<em class="text-emphasis">Why did the ratings drop almost 6 million?</em> After series 7, the GBBO moved from BBC One to Channel 4, and 
 						previous judge Mary Berry and presenters Mel Giedroyc and Sue Perkins out of loyalty to BBC. Some
 						viewers were also disappointed about the move since the show would now include advertisements.
 					</p>				
 					<button id="viewership-more-button"><p>Read More<br><em class="arrow down"></em></p>
 					</button>		
 						<div id="viewership-more">
-							<br>
+							<div>
 							<a href="https://metro.co.uk/2017/08/29/a-timeline-of-the-dramatic-developments-that-led-to-the-rebirth-of-the-great-british-bake-off-on-channel-4-6887039/"
 							>A timeline of the dramatic developments that led to the rebirth of The Great British Bake Off on Channel 4</a>
-							<br>
-							<a href="Great British Bake Off creator claims £75million move to Channel 4 was to escape 'three years of bullying from arrogant BBC bosses'">
-								Great British Bake Off creator claims £75million move to Channel 4 was to escape 'three years of bullying from arrogant BBC bosses'</a>
-							<br>
-							<a href="https://www.bbc.com/news/entertainment-arts-37437907">Great British Bake Off: Mary Berry leaves but Paul Hollywood stays</a>
-							<br>
+							</div>
+
+							<div>
+							<a href="https://www.dailymail.co.uk/tvshowbiz/article-6412353/Great-British-Bake-moved-Channel-4-escape-three-years-bullying-BBC-bosses.html">
+								Great British Bake Off creator claims £75million move to Channel 4 was to escape 'three years of bullying from arrogant BBC bosses</a>
+							</div>
+							<div>
 							<a href="https://www.eater.com/2016/9/22/13014148/great-british-bake-off-mary-berry-leaving">RIP Great British Bake Off: Mary Berry Is Out</a>
-							<br>
+							</div>
+							<div>
 							<a href="https://www.theguardian.com/tv-and-radio/2016/sep/13/sue-perkins-and-mel-giedroyc-to-leave-great-british-bake-off">
 								Sue Perkins and Mel Giedroyc to leave Great British Bake Off</a>
+							</div>
 					</div>				
 				</div>
 
@@ -83,9 +89,9 @@
 
 			<section class="parent--container">
 				<div class="container description">
-					<p> baking competitionlorem ipsum dolor sit amet, consectetur adipiscing elit consectetur adipiscing elit, 
-						sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis 
-						nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+					<h1>Baker Demographics</h1>
+					<p> The contestants are all ages, ranging from as young as <em class='text-emphasis'>17</em> to <em class='text-emphasis'>71</em>. 
+						Females and males are equally represented on the show as well!
 					</p>				
 				</div>
 				<section id="myAgePie" class="container"></section>
@@ -100,7 +106,10 @@
 
 			<hr>
 
-			<section>
+			<section id="bubble-container">
+				<div class='center'>
+					<h1>Who are the Winners?</h1>
+				</div>
 				<div id="myBubbleChart"></div>
 			</section>
 
