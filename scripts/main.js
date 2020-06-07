@@ -57,8 +57,50 @@ document.querySelectorAll('a').forEach(e => {
   e.target = '_blank';
 })
 
+//bubble baker description
+document.querySelectorAll('.bubble-stat').forEach(e => {
+	e.style.color = skyblue;
+})
 
-/*FUNCTION DEFINITIONS*/
+/*EVENT LISTENERS*/
+// see more button for line plot
+function viewershipmore() {
+	var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    } 
+}
+document.getElementById("viewership-more-button").addEventListener("click", viewershipmore);
+
+// click on bubble chart
+function bakermore(d) {
+	let div = document.getElementById('bubble-more')
+	if (div.style.maxHeight){
+		div.style.maxHeight = null;
+    } else {
+		div.style.maxHeight = div.scrollHeight + "px";
+	} 
+
+	// get span elements to update
+	let name = document.getElementById('baker');
+	let age = document.getElementById('age');
+	let occupation = document.getElementById('occupation');
+	let hometown = document.getElementById('hometown');
+	let followers = document.getElementById('followers');
+	let wiki = document.getElementById('wiki');
+
+	//update text
+	name.innerText = d.baker;
+	age.innerText = d.age;
+	occupation.innerText = d.occupation;
+	hometown.innerText = d.hometown;
+	followers.innerText = d.followers;
+	wiki.href = d.wiki;
+}
+
+/*CHART FUNCTION DEFINITIONS*/
 function plotLine() {
 	let line = Highcharts.chart('myLine', {
 		chart: {
@@ -386,6 +428,9 @@ function plotBubble(){
 			.attr("class","circletext")
 		
 		circle = g.append("circle")
+			.on("click", function(d) { //onlick to reveal baker description
+				bakermore(d);
+			})
 			.attr("class","baker")
 			.attr("r",function(d){
 				return radiusScale(d.followers)
@@ -393,7 +438,7 @@ function plotBubble(){
 			.attr("fill",function(d){
 				return "url(#" + d.baker.toLowerCase() +")"
 			})
-			.attr("stroke","black")
+			.attr("stroke",blue)
 
 		label = g.append("text")
 				.attr("class","serieslabel")
@@ -406,6 +451,7 @@ function plotBubble(){
 				.text(function(d) {return "S" + d.series + " Winner"})
 
 		g.on("mouseover",
+		// TODO: change mouseover to reveal baker stats instead of click, make all other bakers opacity low
 		function mouseOver(d) {
 			d3.select(this).select(".baker").attr("opacity",0.2)
 			d3.select(this).select(".serieslabel").attr("opacity",1)
@@ -493,13 +539,16 @@ function plotStackColumn(){
         },
         series: [{
             name: 'handshakes',
-            data: winnerStats['handshake']
+			data: winnerStats['handshake'],
+			color: lightskyblue
         }, {
             name: 'technical win',
-            data: winnerStats['technical']
+			data: winnerStats['technical'],
+			color: blue
         }, {
             name: 'star baker',
-            data: winnerStats['star_baker']
+			data: winnerStats['star_baker'],
+			color: purple
         }],
         exporting: {
             enabled: false
@@ -508,7 +557,7 @@ function plotStackColumn(){
     );
 }
 
-
+/*LOAD DATA AND CALL CHART FUNCTIONS*/ 
 async function loadJSON(path) {
 	let response = await fetch(path);
 	let dataset = await response.json(); // Now available in global scope
@@ -547,16 +596,3 @@ function init() {
 
 document.addEventListener('DOMContentLoaded', init, false);
 
-
-function viewershipmore() {
-	var content = this.nextElementSibling;
-    if (content.style.maxHeight){
-      content.style.maxHeight = null;
-    } else {
-      content.style.maxHeight = content.scrollHeight + "px";
-    } 
-
-
-}
-
-document.getElementById("viewership-more-button").addEventListener("click", viewershipmore);

@@ -1,11 +1,11 @@
-baker,followers,series,image_path
-Edd,328.9,1,images/bakers/edd.jpg
-Joanne,26.3,2,images/bakers/joanne.jpg
-John,168.89999999999998,3,images/bakers/john.jpg
-Frances,123.69999999999999,4,images/bakers/frances.jpg
-Nancy,142.1,5,images/bakers/nancy.jpg
-Nadiya,756.8,6,images/bakers/nadiya.jpg
-Candice,332.9,7,images/bakers/candice.jpg
-Sophie,53.2,8,images/bakers/sophie.jpg
-Rahul,189.0,9,images/bakers/rahul.jpg
-David,144.0,10,images/bakers/david.jpg
+baker,age,occupation,hometown,followers,series,image_path,wiki
+Edd,24,Debt collector for Yorkshire Bank,Bradford,328.9,1,images/bakers/edd.jpg,https://en.wikipedia.org/wiki/Edd_Kimber
+Joanne,41,Housewife,"Ongar, Essex",26.3,2,images/bakers/joanne.jpg,https://en.wikipedia.org/wiki/Joanne_Wheatley
+John,23,Law student,Wigan,168.89999999999998,3,images/bakers/john.jpg,https://en.wikipedia.org/wiki/John_Whaite
+Frances,31,Children's Clothes Designer,"Market Harborough, Leicestershire",123.69999999999999,4,images/bakers/frances.jpg,https://en.wikipedia.org/wiki/Frances_Quinn
+Nancy,60,Retired practice manager,"Barton-Upon-Humber, Lincolnshire",142.1,5,images/bakers/nancy.jpg,https://en.wikipedia.org/wiki/Nancy_Birtwhistle
+Nadiya,30,Full-time mother,Leeds / Luton,756.8,6,images/bakers/nadiya.jpg,https://en.wikipedia.org/wiki/Nadiya_Hussain
+Candice,31,PE teacher,"Barton-Le-Clay, Bedfordshire",332.9,7,images/bakers/candice.jpg,https://en.wikipedia.org/wiki/Candice_Brown
+Sophie,33,Former army officer and trainee stuntwoman,"West Molesey, Surrey",53.2,8,images/bakers/sophie.jpg,https://en.wikipedia.org/wiki/Sophie_Faldo
+Rahul,30,Engineering Researcher,"Howrah, India",189.0,9,images/bakers/rahul.jpg,https://en.wikipedia.org/wiki/Rahul_Mandal
+David,36,Whitby,Health Advisor,144.0,10,images/bakers/david.jpg,https://en.wikipedia.org/wiki/David_Atherton_(baker)

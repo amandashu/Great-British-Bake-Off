@@ -53,7 +53,7 @@
 			<hr>
 
 			<section class="parent--container">
-				<section id="myLine" class="graph-container"></section>
+				<section id="myLine" class="chart-container"></section>
 				<div class="word-container description">
 					<h1>Show Popularity</h1>
 					<p> Viewership for GBBO increases continuously until series 8, where it drops and plateaus thereafter. 
@@ -90,7 +90,8 @@
 			<section class="parent--container">
 				<div class="container description">
 					<h1>Baker Demographics</h1>
-					<p> The contestants are all ages, ranging from as young as <em class='text-emphasis'>17</em> to <em class='text-emphasis'>71</em>. 
+					<p> Unlike many television shows, GBBO's contestants make up all ages, ranging from as young as 
+						<em class='text-emphasis'>17</em> to  as old as <em class='text-emphasis'>71</em>. 
 						Females and males are equally represented on the show as well!
 					</p>				
 				</div>
@@ -105,19 +106,64 @@
 			</section>
 
 			<hr>
+			<section class="dashboard-container">
+                <div class="dashboard-item">
+                    <h3>Dingus</h3>
+					<span>0</span>
+					<div class='small-description'>
+						<p>consectetur adipiscing elit consectetur adipiscing elit, 
+							sed do eiusmod tempor incididunt ut labore</p>
+					</div>
+                </div>
+                <div class="dashboard-item">
+                    <h3>Widget</h3>
+					<span>0</span>
+					<div class='small-description'>
+						<p>consectetur adipiscing elit consectetur adipiscing elit, 
+							sed do eiusmod tempor incididunt ut labore</p>
+					</div>
+                </div>
+                <div class="dashboard-item">
+                    <h3>Sales</h3>
+					<span>$0.00</span>
+					<div class='small-description'>
+						<p>consectetur adipiscing elit consectetur adipiscing elit, 
+							sed do eiusmod tempor incididunt ut labore</p>
+					</div>
+                </div>
+			</section> 
+			<hr>
 
 			<section id="bubble-container">
 				<div class='center'>
 					<h1>Who are the Winners?</h1>
+					<h5>The winners are Edd, Joanne, John, Frances, Na-diya, Candice, Sophie, Rahul, and David. <br>
+						The Series 1 - 10 winners, sized by their combined Twitter and Instagram followers.<br>
+						Click on a winner to learn more about them!<br>
+					</h5>
 				</div>
 				<div id="myBubbleChart"></div>
+				<div id ='bubble-more'>
+					<p class='bubble-more-text'>
+						<!-- Name: <span><span id='name' class="bubble-stat tab"><span></span>k</span></span> -->
+						Name: <span id='baker' class='bubble-stat tab'></span>
+						Age: <span id='age' class="bubble-stat tab"></span>
+						Occupation: <span id='occupation' class='bubble-stat tab'></span>
+						Hometown: <span id='hometown' class= 'bubble-stat'></span>
+					</p> 
+					<p class='bubble-more-text'>
+						Twitter and Instagram followers: <span id='followers' class="bubble-stat tab"></span>
+						Wikipedia: <a href="" id='wiki' class= 'bubble-stat'>_</a>
+					</p>
+				</div>
 			</section>
 
 			<hr>
 
 			<section class="parent--container">
-				<section id="myStackedColumn" class="container"></section>
-				<div class="container description">
+				<section id="myStackedColumn" class="chart-container"></section>
+				<div class="word-container description">
+					<h1>Which Winner Received the Most Recognitions?</h1>
 					<p> baking competitionlorem ipsum dolor sit amet, consectetur adipiscing elit consectetur adipiscing elit, 
 						sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis 
 						nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.

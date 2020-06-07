@@ -1,4 +1,4 @@
-/* html {
+html {
     border: red solid 1px;
 }
 
@@ -16,7 +16,7 @@ svg {
 
 g {
     border: purple solid 1px
-} */
+}
 
 html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
 html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
@@ -37,6 +37,11 @@ h1 {
     /* color:rgb(49, 47, 47); */
 }
 
+h5 {
+    font-family: "Verdana";
+    font-weight: normal;
+    font-size:14px;
+}
 
 hr {
     border:0;
@@ -128,7 +133,7 @@ a{
     width: 100%;
 }
 
-.graph-container {
+.chart-container {
     width:60%
 }
 .word-container {
@@ -145,7 +150,7 @@ a{
     text-align: center;
 }
 
-/*ABOUT SECTION */
+/*VIEWERSHIP SECTION */
 #viewership-more-button {
     width: 80%;
     border: 0px
@@ -176,13 +181,22 @@ a{
       text-decoration: underline;
   }
 
-/*BUBBLE*/
-/* .svg-container {
-    display: block;
-    width: 100%;
-    overflow: hidden;
-  } */
+/*DASHBOARD*/
+.dashboard-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
 
+.dashboard-item {
+    text-align: center;
+    padding-bottom: 0px;
+}
+
+.small-description {
+    padding:20px
+}
+
+/*BUBBLE*/
 #bubble-svg {
     display: block;
     margin: auto;
@@ -190,3 +204,22 @@ a{
     overflow: hidden;
     max-height:450px;
   }
+
+.tab {
+    padding-right: 20px
+}
+
+#bubble-more {
+    text-align: center;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+.bubble-more-text{
+    font-size:14px;
+}
+
+.bubble-stat{
+    font-size: 12px;
+}
