@@ -37,6 +37,17 @@ document.querySelectorAll('.text-emphasis').forEach(e => {
 	e.style.color = skyblue
 })
 
+// target=_blank for all a tags
+document.querySelectorAll('a').forEach(e => {
+  e.target = '_blank';
+})
+
+//bubble baker description
+document.querySelectorAll('.bubble-stat').forEach(e => {
+	e.style.color = skyblue;
+})
+
+/*EVENT LISTENERS*/
 // viewership-more-button
 var vmButton = document.getElementById("viewership-more-button")
 vmButton.style.backgroundColor = bcolor;
@@ -52,52 +63,43 @@ let arr = document.querySelector(".arrow")
 arr.style.border= "solid " + skyblue;
 arr.style.borderWidth= '0 3px 3px 0';
 
-// target=_blank for all a tags
-document.querySelectorAll('a').forEach(e => {
-  e.target = '_blank';
-})
-
-//bubble baker description
-document.querySelectorAll('.bubble-stat').forEach(e => {
-	e.style.color = skyblue;
-})
-
-/*EVENT LISTENERS*/
 // see more button for line plot
-function viewershipmore() {
-	var content = this.nextElementSibling;
-    if (content.style.maxHeight){
-      content.style.maxHeight = null;
-    } else {
-      content.style.maxHeight = content.scrollHeight + "px";
-    } 
+function seeMore(id) {
+	return function(){
+		let tag = document.getElementById(id);
+		if (tag.style.maxHeight){
+			tag.style.maxHeight = null;
+		} else {
+			tag.style.maxHeight = tag.scrollHeight + "px";
+		} 
+	}
 }
-document.getElementById("viewership-more-button").addEventListener("click", viewershipmore);
+document.getElementById("viewership-more-button").addEventListener("click", seeMore('viewership-more'));
 
 // click on bubble chart
 function bakermore(d) {
-	let div = document.getElementById('bubble-more')
-	if (div.style.maxHeight){
-		div.style.maxHeight = null;
-    } else {
-		div.style.maxHeight = div.scrollHeight + "px";
-	} 
+	// let div = document.getElementById('bubble-more')
+	// if (div.style.maxHeight){
+	// 	div.style.maxHeight = null;
+    // } else {
+	// 	div.style.maxHeight = div.scrollHeight + "px";
+	// } 
 
 	// get span elements to update
+	let series = document.getElementById('series')
 	let name = document.getElementById('baker');
 	let age = document.getElementById('age');
 	let occupation = document.getElementById('occupation');
 	let hometown = document.getElementById('hometown');
 	let followers = document.getElementById('followers');
-	let wiki = document.getElementById('wiki');
 
 	//update text
+	series.innerText = d.series;
 	name.innerText = d.baker;
 	age.innerText = d.age;
 	occupation.innerText = d.occupation;
 	hometown.innerText = d.hometown;
-	followers.innerText = d.followers;
-	wiki.href = d.wiki;
+	followers.innerText = d.followers + "k";
 }
 
 /*CHART FUNCTION DEFINITIONS*/
@@ -429,7 +431,8 @@ function plotBubble(){
 		
 		circle = g.append("circle")
 			.on("click", function(d) { //onlick to reveal baker description
-				bakermore(d);
+				// bakermore(d);
+				window.open(d.wiki);
 			})
 			.attr("class","baker")
 			.attr("r",function(d){
@@ -445,21 +448,30 @@ function plotBubble(){
 				.attr("text-anchor","middle")
 				.attr("stroke","black")
 				.attr("stroke-width","1px")
-				.attr("dy",".3em")
-				// .attr("fontsize","50%")
+				.attr("dy",function(d){
+					let h = d3.select(this.previousElementSibling).node().getBBox().height;
+					return h/2;
+				})
 				.attr("opacity",0)
 				.text(function(d) {return "S" + d.series + " Winner"})
 
 		g.on("mouseover",
 		// TODO: change mouseover to reveal baker stats instead of click, make all other bakers opacity low
 		function mouseOver(d) {
-			d3.select(this).select(".baker").attr("opacity",0.2)
-			d3.select(this).select(".serieslabel").attr("opacity",1)
+			// console.log(d3.select(this).select(".baker").node().getBBox().height)
+
+			seeMore('bubble-more')(); 
+			d3.selectAll("circle").attr("opacity", 0.5);
+			d3.select(this).select(".baker").attr("opacity",1);
+			d3.select(this).select(".serieslabel").attr("opacity",1);
+			bakermore(d)
 		  })
-		  .on("mouseout", function mouseOut() {
-			d3.select(this).select(".baker").attr("opacity",1)
-			d3.select(this).select(".serieslabel").attr("opacity",0)
+		  .on("mouseout", function mouseOut(d) {
+			seeMore('bubble-more')();
+			d3.selectAll("circle").attr("opacity", 1);
+			d3.select(this).select(".serieslabel").attr("opacity",0);
 		  })
+
 
 
 		simulation.nodes(datapoints)
@@ -495,7 +507,7 @@ function plotStackColumn(){
 			style: {
 				fontFamily: font,
 				color: blue
-			}
+			},
         },
         title: {
             text: 'Recognitions for Each Winner'
