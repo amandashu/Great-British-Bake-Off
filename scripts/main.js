@@ -4,7 +4,6 @@ document.querySelectorAll('a').forEach(e => {
 	e.target = '_blank';
 	e.style.color = 'inherit';
   })
-
   
 // definitions
 var bcolor = '#f0e3e3';
@@ -46,7 +45,7 @@ document.querySelectorAll('.text-emphasis').forEach(e => {
 	e.style.color = skyblue
 })
 
-//bubble baker description
+// bubble baker description
 document.querySelectorAll('.bubble-stat').forEach(e => {
 	e.style.color = skyblue;
 })
@@ -58,10 +57,12 @@ document.querySelectorAll('.dashboard-num').forEach(e => {
 document.querySelector('#dashboard-definition').style.color = lightpurple;
 
 /*EVENT LISTENERS*/
-// viewership-more-button
+// viewership-more-button colors
 var vmButton = document.getElementById("viewership-more-button")
 vmButton.style.backgroundColor = bcolor;
 vmButton.style.color = skyblue;
+
+// viewership-more hover functionality
 function hovercolor(x){
 	return function(){
 		vmButton.style.backgroundColor = x
@@ -69,11 +70,13 @@ function hovercolor(x){
 }
 vmButton.addEventListener("mouseover", hovercolor(lightblue));
 vmButton.addEventListener("mouseout", hovercolor(bcolor));
+
+// arrow in viewship-more button
 let arr = document.querySelector(".arrow")
 arr.style.border= "solid " + skyblue;
 arr.style.borderWidth= '0 3px 3px 0';
 
-// see more button for line plot
+// helper function that reveals and hides tag
 function seeMore(id) {
 	return function(){
 		let tag = document.getElementById(id);
@@ -84,9 +87,11 @@ function seeMore(id) {
 		} 
 	}
 }
+
+// see more for line plot
 document.getElementById("viewership-more-button").addEventListener("click", seeMore('viewership-more'));
 
-// dashboard hover
+// dashboard text
 function dashboardMore(t){
 	return function (){
 		if (t=='handshake-div'){
@@ -104,6 +109,7 @@ function dashboardMore(t){
 	}
 }
 
+// hover functionality for dashboard
 document.querySelectorAll('.dashboard-item').forEach(e => {
 	e.addEventListener("mouseover", dashboardMore(e.id));
 })
@@ -258,10 +264,13 @@ function plotAgePie() {
 }
 
 function plotGenderPie() {
+	// add colors to data
 	colors = [lightskyblue,pink]
 	for (i in gender) {
 		gender[i]['color'] = colors[i]
 	}
+
+	// plot chart
 	var pie = Highcharts.chart('myGenderPie', {
 		chart: {
 			type: "pie",
@@ -319,6 +328,52 @@ function plotGenderPie() {
 	});
 }
 
+// function wordcloud2(){
+// 	// set the dimensions and margins of the graph
+// 	var margin = {top: 10, right: 10, bottom: 10, left: 10},
+// 	width = 450 - margin.left - margin.right,
+// 	height = 450 - margin.top - margin.bottom;
+
+// 	// append the svg object to the body of the page
+// 	var svg = d3.select("#myWordCloud2").append("svg")
+// 	.attr("width", width + margin.left + margin.right)
+// 	.attr("height", height + margin.top + margin.bottom)
+// 	.append("g")
+// 	.attr("transform",
+// 		"translate(" + margin.left + "," + margin.top + ")");
+
+// 	// Constructs a new cloud layout instance. It run an algorithm to find the position of words that suits your requirements
+// 	// Wordcloud features that are different from one word to the other must be here
+// 	var layout = d3.layout.cloud()
+// 	.size([width, height])
+// 	.words(words['words'].map(function(d) { return {text: d.name, size:d.weight}; }))
+// 	.padding(5)        //space between words
+// 	.rotate(function() { return ~~(Math.random() * 2) * 360; })
+// 	.fontSize(function(d) { return d.size; })      // font size of words
+// 	.on("end", draw);
+// 	layout.start();
+
+// 	// This function takes the output of 'layout' above and draw the words
+// 	// Wordcloud features that are THE SAME from one word to the other can be here
+// 	function draw(words) {
+// 		console.log(words)
+// 	svg
+// 	.append("g")
+// 	.attr("transform", "translate(" + layout.size()[0] / 2 + "," + layout.size()[1] / 2 + ")")
+// 	.selectAll("text")
+// 		.data(words)
+// 		.enter().append("text")
+// 		.style("font-size", function(d) { return d.size; })
+// 		.style("fill", "#69b3a2")
+// 		.attr("text-anchor", "middle")
+// 		.style("font-family", "Impact")
+// 		.attr("transform", function(d) {
+// 		return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+// 		})
+// 		.text(function(d) { return d.text; });
+// 	}
+// }
+
 function plotWordCloud(){
     let myWordCloud = Highcharts.chart('myWordCloud', {
 		chart: {
@@ -327,8 +382,9 @@ function plotWordCloud(){
 				fontFamily: font,
 				color: blue
 			},
-			marginLeft: 100,
-			marginRight:100
+			marginLeft: 50,
+			marginRight:50,
+			height: 500
 		},
         accessibility: {
             screenReaderSection: {
@@ -345,19 +401,22 @@ function plotWordCloud(){
             type: 'wordcloud',
             data: words['words'],
             name: 'Occurrences',
-            // spiral: 'archimedean',
+            spiral: 'archimedean',
             rotation: {
                 from: 0,
-                to: 0,
-                orientations: 20
+                to: 90,
             },
             placementStrategy: 'random',
             style: {
-                "fontFamily":"sans-serif", 
+                "fontFamily":"Verdana", 
                 "fontWeight": "900"},
-            maxFontSize: 80,
-			minFontSize: 14,
-			colors: [blue,purple,pink,skyblue, lightblue]
+            maxFontSize: 100,
+			minFontSize: 20,
+			colors: [blue,purple,pink,skyblue, lightblue],
+			dataLabels: {
+				enabled:true,
+				padding:0
+			},
         }],
         tooltip: {
 			headerFormat:null,
@@ -397,6 +456,7 @@ function plotBubble(){
 		.append('g')
 		.attr("transform","translate(" + width/2 + "," + height/2 +")") // translate to center
 
+	// holds pattern tags
 	var defs = svg.append("defs")
 
 	var radiusScale = d3.scaleSqrt()
@@ -466,6 +526,7 @@ function plotBubble(){
 			})
 			.attr("stroke",blue)
 
+		// add labels to circles
 		label = g.append("text")
 				.attr("class","serieslabel")
 				.attr("text-anchor","middle")
@@ -478,6 +539,7 @@ function plotBubble(){
 				.attr("opacity",0)
 				.text(function(d) {return d.baker})
 
+		// hover functionality on circles
 		g.on("mouseover",
 		function mouseOver(d) {
 			seeMore('bubble-more')(); 
@@ -491,7 +553,6 @@ function plotBubble(){
 			d3.selectAll("circle").attr("opacity", 1);
 			d3.select(this).select(".serieslabel").attr("opacity",0);
 		  })
-
 
 
 		simulation.nodes(datapoints)
@@ -600,12 +661,14 @@ async function loadJSON(path) {
 }
 
 function init() {
+	//load data
     viewersPromise = loadJSON('./data/viewers_by_season.json');
     agePromise = loadJSON('./data/ages.json');
     genderPromise = loadJSON('./data/gender.json');
     wordsPromise = loadJSON('./data/bake_words.json');
     statsPromise = loadJSON('./data/winners_stats.json');
 
+	// call charting functions
     viewersPromise.then(function (v){
         viewers = v;
         plotLine();
@@ -620,7 +683,9 @@ function init() {
     });
     wordsPromise.then(function (w){
         words = w;
-        plotWordCloud();
+		plotWordCloud();
+		// wordcloud2();
+
 	});
 	plotBubble();
     statsPromise.then(function (s) {
@@ -629,5 +694,6 @@ function init() {
     });
 }
 
+// start once dom is loaded
 document.addEventListener('DOMContentLoaded', init, false);
 
