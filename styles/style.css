@@ -1,40 +1,24 @@
-/* html {
-    border: red solid 1px;
-}
-
-div {
-    border: blue solid 1px;
-}
-
-section {
-    border: green solid 1px
-}
-
-svg {
-    border: orange solid 1px
-}
-
-g {
-    border: purple solid 1px
-} */
-
 html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
-html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
-body{margin:0}
-html{overflow-x:hidden}
+
+html{
+    -ms-text-size-adjust:100%;
+    -webkit-text-size-adjust:100%;
+    overflow-x:hidden;
+}
+
+body{
+    margin:0
+}
 
 /*FONTS AND GENERAL STYLING*/
 body {
     font-family: Verdana;
-    /* color:rgb(49, 47, 47); */
 }
 
 h1 {
     font-family: "Verdana";
-    /* letter-spacing: 5px; */
     font-weight: normal;
     font-size:30px;
-    /* color:rgb(49, 47, 47); */
 }
 
 h5 {
@@ -98,7 +82,6 @@ a{
 }
 
 .header-container {
-    /* background-color:white!important; */
     display: flex;
     width: 100%; 
     text-align: center;
@@ -113,7 +96,6 @@ a{
 }
 
 /*MAIN CONTENT*/
-
 #content {
     padding-left:120px;
     padding-right:120px;
@@ -195,6 +177,25 @@ a{
 
 .small-description {
     padding:20px
+}
+
+.dashboard-num{
+    font-size:24px
+}
+
+.dashboard-link {
+    text-decoration: underline!important;
+}
+
+#dashboard-definition-div {
+    text-align: center;
+    padding-left: 250px;
+    padding-right: 250px;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
 }
 
 /*BUBBLE*/

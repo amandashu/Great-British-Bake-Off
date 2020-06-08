@@ -1,4 +1,11 @@
 /*COLOR SCHEME*/
+// all a tags
+document.querySelectorAll('a').forEach(e => {
+	e.target = '_blank';
+	e.style.color = 'inherit';
+  })
+
+  
 // definitions
 var bcolor = '#f0e3e3';
 var font = "Verdana";
@@ -9,6 +16,7 @@ var lightblue = '#adc3cc'
 var grey = '#BAB2B5';
 var pink = "#AC3B61";
 var purple = 'rgb(85, 25, 85)';
+var lightpurple = 'rgb(177, 69, 177)'
 
 // background color
 document.querySelector('html').style.backgroundColor =  bcolor;
@@ -17,14 +25,15 @@ document.getElementById('viewership-more').style.backgroundColor = bcolor
 
 // text color
 document.querySelector('body').style.color = blue
-document.querySelectorAll('#viewership-more a').forEach(e => {
-	e.style.color = blue
-})
 
 // top bar color
 document.querySelectorAll('.topbar-button').forEach(e => {
 	e.style.backgroundColor = pink
 	e.style.color = 'white'
+})
+
+document.querySelectorAll('.topbar-button a').forEach(e => {
+	e.style.color = 'white!important'
 })
 
 // hr elements color
@@ -37,15 +46,16 @@ document.querySelectorAll('.text-emphasis').forEach(e => {
 	e.style.color = skyblue
 })
 
-// target=_blank for all a tags
-document.querySelectorAll('a').forEach(e => {
-  e.target = '_blank';
-})
-
 //bubble baker description
 document.querySelectorAll('.bubble-stat').forEach(e => {
 	e.style.color = skyblue;
 })
+
+// dashboard descriptions
+document.querySelectorAll('.dashboard-num').forEach(e => {
+	e.style.color = skyblue;
+})
+document.querySelector('#dashboard-definition').style.color = lightpurple;
 
 /*EVENT LISTENERS*/
 // viewership-more-button
@@ -76,15 +86,33 @@ function seeMore(id) {
 }
 document.getElementById("viewership-more-button").addEventListener("click", seeMore('viewership-more'));
 
-// click on bubble chart
-function bakermore(d) {
-	// let div = document.getElementById('bubble-more')
-	// if (div.style.maxHeight){
-	// 	div.style.maxHeight = null;
-    // } else {
-	// 	div.style.maxHeight = div.scrollHeight + "px";
-	// } 
+// dashboard hover
+function dashboardMore(t){
+	return function (){
+		if (t=='handshake-div'){
+			var words = "When Judge Paul Hollywood is particulariy impressed with a contestant's bake, \
+						he gives the contestant a handshake. This rare praise is coveted among bakers"
+		} else if (t == 'technical-div') {
+			var words = "In the technical round, contestants are all given the same recipe with mimimal \
+				instructions. The judges do a blind tasting and rank the bakes from worst to best.";
+		} else {
+			var words = "At the end of each week, the judges choose a \"star baker\" whom they feel \
+				were the best performing baker that week.";
+		}
+		document.getElementById('dashboard-definition').innerText = words;
+		seeMore('dashboard-definition-div')();
+	}
+}
 
+document.querySelectorAll('.dashboard-item').forEach(e => {
+	e.addEventListener("mouseover", dashboardMore(e.id));
+})
+document.querySelectorAll('.dashboard-item').forEach(e => {
+	e.addEventListener("mouseout", seeMore('dashboard-definition-div'));
+})
+
+// bubble chart- about the bakers
+function bakermore(d) {
 	// get span elements to update
 	let series = document.getElementById('series')
 	let name = document.getElementById('baker');
@@ -99,7 +127,7 @@ function bakermore(d) {
 	age.innerText = d.age;
 	occupation.innerText = d.occupation;
 	hometown.innerText = d.hometown;
-	followers.innerText = d.followers + "k";
+	followers.innerText = parseFloat((d.followers)).toFixed(1) + "k";
 }
 
 /*CHART FUNCTION DEFINITIONS*/
@@ -133,7 +161,8 @@ function plotLine() {
 					fontWeight:'bold',
 				}
 			},
-			lineColor: lightblue
+			lineColor: lightblue,
+			tickInterval: 1
 		},
 		yAxis: {
 			min: 0,
@@ -208,12 +237,6 @@ function plotAgePie() {
 			marker: {
 				enabled: true
 			},
-			// color: {
-			// 	pattern: {
-			// 		image:,
-			// 		aspectRatio: 9/4
-			// 	}
-			// },
 		}],
 		plotOptions: {
 			pie: {
@@ -446,20 +469,17 @@ function plotBubble(){
 		label = g.append("text")
 				.attr("class","serieslabel")
 				.attr("text-anchor","middle")
-				.attr("stroke","black")
+				.attr("stroke",purple)
 				.attr("stroke-width","1px")
 				.attr("dy",function(d){
 					let h = d3.select(this.previousElementSibling).node().getBBox().height;
-					return h/2;
+					return 4*h/7;
 				})
 				.attr("opacity",0)
-				.text(function(d) {return "S" + d.series + " Winner"})
+				.text(function(d) {return d.baker})
 
 		g.on("mouseover",
-		// TODO: change mouseover to reveal baker stats instead of click, make all other bakers opacity low
 		function mouseOver(d) {
-			// console.log(d3.select(this).select(".baker").node().getBBox().height)
-
 			seeMore('bubble-more')(); 
 			d3.selectAll("circle").attr("opacity", 0.5);
 			d3.select(this).select(".baker").attr("opacity",1);
@@ -510,10 +530,13 @@ function plotStackColumn(){
 			},
         },
         title: {
-            text: 'Recognitions for Each Winner'
+			text: 'Recognitions for Each Winner',
+			style: {
+				color: blue
+			}
         },
         xAxis: {
-            categories: winnerStats['bakers']
+			categories: winnerStats['bakers'],
         },
         yAxis: {
             min: 0,
