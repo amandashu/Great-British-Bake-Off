@@ -1,9 +1,3 @@
-// all a tags
-document.querySelectorAll('a').forEach(e => {
-	e.target = '_blank';
-	e.style.color = 'inherit';
-  })
-
 /*COLOR SCHEME*/
 // color definitions
 var bcolor = '#f0e3e3';
@@ -11,40 +5,41 @@ var font = "Verdana";
 var blue = '#123C69';
 var skyblue = '#01a6ec';
 var lightskyblue = '#88cbe7';
-var lightblue = '#adc3cc'
+var lightblue = '#adc3cc';
 var grey = '#BAB2B5';
 var pink = "#AC3B61";
 var purple = 'rgb(85, 25, 85)';
 var lightpurple = 'rgb(177, 69, 177)';
 var hcolor = '#ccc';
 
+// all a tags
+document.querySelectorAll('a').forEach(e => {
+	e.target = '_blank';
+	e.style.color = 'inherit';
+})
+
 // background color
 document.querySelector('html').style.backgroundColor =  bcolor;
-document.getElementById('topbar').style.backgroundColor = pink
-document.getElementById('viewership-more').style.backgroundColor = bcolor
+document.getElementById('topbar').style.backgroundColor = pink;
+document.getElementById('viewership-more').style.backgroundColor = bcolor;
 
 // text color
-document.querySelector('body').style.color = blue
+document.querySelector('body').style.color = blue;
 
 // top bar color
 document.querySelectorAll('.topbar-button').forEach(e => {
-	e.style.backgroundColor = pink
-	e.style.color = 'white'
+	e.style.backgroundColor = pink;
+	e.style.color = 'white';
 })
-
-document.querySelectorAll('.topbar-button a').forEach(e => {
-	e.style.color = 'white!important'
-})
-
 
 // hr elements color
 document.querySelectorAll('hr').forEach(e => {
-	e.style.borderTop = '1px solid ' + lightblue
+	e.style.borderTop = '1px solid ' + lightblue;
 })
 
 // text-emphasis elements color
 document.querySelectorAll('.text-emphasis').forEach(e => {
-	e.style.color = skyblue
+	e.style.color = skyblue;
 })
 
 // viewership-more-button colors
@@ -53,13 +48,13 @@ vmButton.style.backgroundColor = bcolor;
 vmButton.style.color = skyblue;
 
 // arrow in viewship-more button
-let arr = document.querySelector(".arrow")
+let arr = document.querySelector(".arrow");
 arr.style.border= "solid " + skyblue;
 arr.style.borderWidth= '0 3px 3px 0';
 
 // bubble baker description
 document.querySelectorAll('.bubble-stat').forEach(e => {
-	e.style.color = skyblue;
+	e.style.color = lightpurple;
 })
 
 // dashboard descriptions
@@ -72,7 +67,7 @@ document.querySelector('#dashboard-definition').style.color = lightpurple;
 // helper function for background colors
 function hovercolor(tag, x){
 	return function(){
-		tag.style.backgroundColor = x
+		tag.style.backgroundColor = x;
 	}
 }
 
@@ -112,9 +107,9 @@ function dashboardMouseOver(t){
 
 		//text of revealed div
 		if (t=='handshake-div'){
-			var words = "When Judge Paul Hollywood is particulariy impressed with a contestant's bake, \
-						he gives the contestant a handshake. This rare praise is coveted among bakers, \
-						although arguably not as rare for the later seasons."
+			var words = "When judge Paul Hollywood is particulariy impressed with a contestant's bake, \
+						he gives the contestant a handshake. This rare praise is coveted among bakers \
+						(although arguably not as rare for the later seasons).";
 		} else if (t == 'technical-div') {
 			var words = "In the technical round, contestants are all given the same recipe with mimimal \
 				instructions. The judges do a blind tasting and rank the bakes from worst to best.";
@@ -157,10 +152,10 @@ document.querySelectorAll('.dashboard-item').forEach(e => {
 	e.addEventListener("mouseout", dashboardMouseOut(e.id));
 })
 
-// helper function for bubble chart- about the bakers
+// helper function for bubble chart: about the bakers
 function bakermore(d) {
 	// get span elements to update
-	let series = document.getElementById('series')
+	let series = document.getElementById('series');
 	let name = document.getElementById('baker');
 	let age = document.getElementById('age');
 	let occupation = document.getElementById('occupation');
@@ -227,25 +222,27 @@ function plotViewerLine() {
 		},
 		series: [{
 				data: viewers['data'],
-			}],
-			tooltip: { enabled: false },
-			plotOptions:{
-				series: {
-					animation: false,
-					color: pink
-				}
-			},
-			exporting: {
-				enabled: false
+		}],
+		tooltip: { 
+			headerFormat:null,
+			pointFormat: 'Series {point.x}: {point.y:.1f}M viewers ',
+		},	
+		plotOptions:{
+			series: {
+				animation: false,
+				color: pink
 			}
+		},
+		exporting: {
+			enabled: false
 		}
-	);
+	});
 }
 
 function plotAgePie() {
-	colors = [lightskyblue, purple, blue, pink]
+	colors = [lightskyblue, purple, blue, pink];
 	for (i in ages) {
-		ages[i]['color'] = colors[i]
+		ages[i]['color'] = colors[i];
 	}
 	var pie = Highcharts.chart('myAgePie', {
 		chart: {
@@ -277,7 +274,6 @@ function plotAgePie() {
 				color:  '#FFFFFF',
 				borderColor: '#FFFFFF',
 				style: {
-					fontSize: "8px",
 					textOutline: false
 				}
 			},
@@ -285,31 +281,34 @@ function plotAgePie() {
 				enabled: true
 			},
 		}],
-			plotOptions: {
-				pie: {
-					showInLegend: true,
-					startAngle: 90
-				},
-				series: {
-					animation: false,
-				}
+		plotOptions: {
+			pie: {
+				showInLegend: true,
+				startAngle: 90
 			},
-			tooltip: { enabled: false },
-			legend: {
-				enabled: true
-			},
-			exporting: {
-				enabled: false
+			series: {
+				animation: false,
 			}
+		},
+		tooltip: { 
+			headerFormat:null,
+			pointFormat: '{point.percentage:.1f}% are ages {point.name}',
+		},	
+		legend: {
+			enabled: true,
+			width: 200
+		},
+		exporting: {
+			enabled: false
 		}
-	);
+	});
 }
 
 function plotGenderPie() {
 	// add colors to data
-	colors = [lightskyblue,pink]
+	colors = [lightskyblue,pink];
 	for (i in gender) {
-		gender[i]['color'] = colors[i]
+		gender[i]['color'] = colors[i];
 	}
 
 	// plot chart
@@ -324,9 +323,6 @@ function plotGenderPie() {
 		},
 		title: {
 			text: 'Gender',
-			style: {
-				// fontWeight:'bold',
-			},
 			style: {
 				color:blue
 			}
@@ -351,24 +347,26 @@ function plotGenderPie() {
 				enabled: true
 			}
 		}],
-			plotOptions: {
-				pie: {
-					showInLegend: true,
-					startAngle: 90
-				},
-				series: {
-					animation: false
-				}
+		plotOptions: {
+			pie: {
+				showInLegend: true,
+				startAngle: 90
 			},
-			tooltip: { enabled: false },
-			legend: {
-				enabled: true
-			},
-			exporting: {
-				enabled: false
+			series: {
+				animation: false
 			}
+		},
+		tooltip: { 
+			headerFormat:null,
+			pointFormat: '{point.name}: {point.percentage:.1f}%',
+		},			
+		legend: {
+			enabled: true
+		},
+		exporting: {
+			enabled: false
 		}
-	);
+	});
 }
 
 function plotWordCloud(){
@@ -415,32 +413,31 @@ function plotWordCloud(){
 				padding:0
 			},
 		}],
-			tooltip: {
-				headerFormat:null,
-				pointFormat:'{point.name}' + ": " + "{point.weight}" + " occurrences",
-				enabled: true
-			},
-			exporting: {
-				enabled: false
-			},
-			title: {
-				text: 'What do the bakers bake?',
-				style: {
-					fontFamily: 'Verdana',
-					color: blue,
-					fontSize: 30
-				}
-			},
-			subtitle: {
-				text: 'A wordcloud of bake descriptions.',
-				style: {
-					fontFamily: 'Verdana',
-					color: blue,
-					fontSize: 14
-				}
-			},
-		}
-	);
+		tooltip: {
+			headerFormat:null,
+			pointFormat:'{point.name}' + ": " + "{point.weight}" + " occurrences",
+			enabled: true
+		},
+		exporting: {
+			enabled: false
+		},
+		title: {
+			text: 'What do the bakers bake?',
+			style: {
+				fontFamily: 'Verdana',
+				color: blue,
+				fontSize: 30
+			}
+		},
+		subtitle: {
+			text: 'A wordcloud of bake descriptions.',
+			style: {
+				fontFamily: 'Verdana',
+				color: blue,
+				fontSize: 14
+			}
+		},
+	});
 }
 
 function plotHandshakeLine() {
@@ -451,7 +448,8 @@ function plotHandshakeLine() {
 			style: {
 				fontFamily: font,
 				color: grey
-			}
+			},
+			height:350
 		},
 		title: {
 			text: 'Number of Hollywood Handshakes by Series',
@@ -473,7 +471,7 @@ function plotHandshakeLine() {
 		yAxis: {
 			min: 0,
 			title: {
-				text: 'Number of Hollywood Handshakes',
+				text: '# of Hollywood Handshakes',
 				align: 'middle',
 				style: {
 					fontWeight:'bold',
@@ -487,19 +485,20 @@ function plotHandshakeLine() {
 		},
 		series: [{
 				data: handshakes['data'],
-			}],
-			tooltip: { enabled: false },
-			plotOptions:{
-				series: {
-					animation: false,
-					color: pink
-				}
-			},
-			exporting: {
-				enabled: false
+		}],
+		tooltip: { 
+			enabled: false 
+		},
+		plotOptions:{
+			series: {
+				animation: false,
+				color: pink
 			}
+		},
+		exporting: {
+			enabled: false
 		}
-	);
+	});
 }
 
 function plotBubble(){
@@ -511,25 +510,25 @@ function plotBubble(){
 		.attr("preserveAspectRatio", "xMinYMin meet")
 		.attr('viewBox', '75 75 ' + (width-150) + ' ' + (height-150))
 		.append('g')
-		.attr("transform","translate(" + width/2 + "," + height/2 +")") // translate to center
+		.attr("transform","translate(" + width/2 + "," + height/2 +")"); // translate to center
 
 	// holds pattern tags
-	var defs = svg.append("defs")
+	var defs = svg.append("defs");
 
 	var radiusScale = d3.scaleSqrt()
 		.domain([1,500]) //domain of data
-		.range([10,80]) // radius of circles
+		.range([10,80]); // radius of circles
 
 	var simulation = d3.forceSimulation()
 		.force("x", d3.forceX().strength(0.05)) // stay at center
 		.force("y", d3.forceY().strength(0.05))
 		.force("collide",d3.forceCollide(function(d){
 			return radiusScale(d.followers) +1//pull circles apart based on radius of circle
-		})) 
+		})); 
 
 	d3.queue()
 		.defer(d3.csv, "data/insta.csv")
-		.await(ready)
+		.await(ready);
 
 	function ready (error, datapoints){
 		// create patterns for circles
@@ -567,7 +566,7 @@ function plotBubble(){
 			.data(datapoints)
 			.enter()
 			.append("g")
-			.attr("class","circletext")
+			.attr("class","circletext");
 		
 		circle = g.append("circle")
 			.on("click", function(d) { //onlick to reveal baker description
@@ -581,26 +580,27 @@ function plotBubble(){
 			.attr("fill",function(d){
 				return "url(#" + d.baker.toLowerCase() +")"
 			})
-			.attr("stroke",blue)
+			.attr("stroke",blue);
 
 		// add labels to circles
 		label = g.append("text")
 				.attr("class","serieslabel")
 				.attr("text-anchor","middle")
-				.attr("stroke",purple)
-				.attr("stroke-width","1px")
+				.attr('fill',purple)
+				.attr("stroke",'white')
+				.attr("stroke-width","0.05px")
 				.attr("dy",function(d){
 					let h = d3.select(this.previousElementSibling).node().getBBox().height;
 					return 4*h/7;
 				})
 				.attr("opacity",0)
-				.text(function(d) {return d.baker})
+				.text(function(d) {return d.baker});
 
 		// hover functionality on circles
 		g.on("mouseover",
 		function mouseOver(d) {
 			seeMore('bubble-more')(); 
-			d3.selectAll("circle").attr("opacity", 0.5);
+			d3.selectAll("circle").attr("opacity", 0.3);
 			d3.select(this).select(".baker").attr("opacity",1);
 			d3.select(this).select(".serieslabel").attr("opacity",1);
 			bakermore(d)
@@ -609,30 +609,29 @@ function plotBubble(){
 			seeMore('bubble-more')();
 			d3.selectAll("circle").attr("opacity", 1);
 			d3.select(this).select(".serieslabel").attr("opacity",0);
-		  })
+		  });
 
 
 		simulation.nodes(datapoints)
-			.on("tick",ticked)
+			.on("tick",ticked);
 
 		function ticked(){
 			circle.
 				attr("cx",function(d){
-					return d.x
+					return d.x;
 				})
 				.attr("cy", function(d){
-					return d.y
+					return d.y;
 				})
 			label.
 				attr("x",function(d){
-					return d.x
+					return d.x;
 				})
 				.attr("y", function(d){
-					return d.y
+					return d.y;
 				})
 		}
 	}
-
 }
 
 
@@ -691,7 +690,7 @@ function plotStackColumn(){
             }
         },
         series: [{
-            name: 'handshakes',
+            name: 'handshake',
 			data: winnerStats['handshake'],
 			color: lightskyblue
         }, {
@@ -706,8 +705,7 @@ function plotStackColumn(){
         exporting: {
             enabled: false
           }
-    }
-    );
+    });
 }
 
 /*LOAD DATA AND CALL CHART FUNCTIONS*/ 
@@ -724,7 +722,7 @@ function init() {
     genderPromise = loadJSON('./data/gender.json');
     wordsPromise = loadJSON('./data/bake_words.json');
 	statsPromise = loadJSON('./data/winners_stats.json');
-	handshakesPromise = loadJSON('./data/handshakes_by_season.json')
+	handshakesPromise = loadJSON('./data/handshakes_by_season.json');
 
 	// call charting functions
     viewersPromise.then(function (v){
@@ -749,7 +747,7 @@ function init() {
 	});
 	plotBubble();
     statsPromise.then(function (s) {
-        winnerStats = s
+        winnerStats = s;
 		plotStackColumn();
     });
 }

@@ -14,7 +14,7 @@
 		<script src="https://github.highcharts.com/master/modules/exporting.js"></script>
 	</head>
 
-	<div id="topbar" style="max-width:1300px;">
+	<div id="topbar">
 		<div style="letter-spacing:4px;">
 			<a class="topbar-button" href="https://www.linkedin.com/in/amandashu/">AMANDA SHU</a>
 			<div id="topbar-right">
@@ -24,24 +24,24 @@
 		</div>
 	</div>
 	
-	<header class='header-container' style="max-width:1300px">
-		<div class = "header-item">
-			<img id = "left-bake" class = "header-bakes" src="./images/left_bakes.png" alt="bake drawings on the left of logo" height="130"/>
-		</div>
-		<div class = "header-item">
-			<img src="./images/gbbo_logo.png" alt="Great British Bake Off Logo" height="175"/>
-		</div>
-		<div class = "header-item">
-			<img id = "right-bake" class = "header-bakes" src="./images/right_bakes.png" alt="bake drawings on the right of logo" height="130"/>
-		</div>
-	</header>	
-
 	<body style="max-width:1300px; margin:auto;">
+		<div id='header-container'>
+			<div class = "header-item">
+				<img id = "left-bake" class = "header-bakes" src="./images/left_bakes.png" alt="bake drawings on the left of logo" height="130"/>
+			</div>
+			<div class = "header-item">
+				<img src="./images/gbbo_logo.png" alt="Great British Bake Off Logo" height="175"/>
+			</div>
+			<div class = "header-item">
+				<img id = "right-bake" class = "header-bakes" src="./images/right_bakes.png" alt="bake drawings on the right of logo" height="130"/>
+			</div>
+		</div>	
+		
 		<div id="content">
 			<section class="center">
 				<h1>About</h1><br>
 				<div class="description">
-					<p>The <i>Great British Bake Off (GBBO)</i> is a British television baking competitions
+					<p>The <i>Great British Bake Off (GBBO)</i> is a British television baking competition where
 						12 amateur bakers compete against each other over the course of twelve weeks. Each week, a theme 
 						is assigned (i.e. Pastry Week) and the contestants bake to impress the judges in the Signature, 
 						Technical, and Show Stopper rounds.
@@ -56,32 +56,29 @@
 				<div class="word-container description">
 					<h1>Show Popularity</h1>
 					<p> Viewership for GBBO increases continuously until series 8, where it drops and plateaus thereafter. 
-						<em class="text-emphasis">Why did the ratings drop almost 6 million?</em> After series 7, the GBBO moved from BBC One to Channel 4, and 
-						previous judge Mary Berry and presenters Mel Giedroyc and Sue Perkins out of loyalty to BBC. Some
-						viewers were also disappointed about the move since the show would now include advertisements.
+						<em class="text-emphasis">Why did the viewership drop by almost 5 million in Series 8?</em> After series 7, the GBBO moved from BBC One to Channel 4, and 
+						previous judge Mary Berry and presenters Mel Giedroyc and Sue Perkins left the show out of loyalty to BBC. Some
+						viewers were also disappointed about the move since it meant the show would now include advertisements.
 					</p>				
-					<button id="viewership-more-button"><p>Read More<br><em class="arrow down"></em></p>
-					</button>		
-						<div id="viewership-more">
-							<div>
+					<button id="viewership-more-button"><p>Read More<br><em class="arrow down"></em></p></button>		
+					<div id="viewership-more">
+						<div>
 							<a href="https://metro.co.uk/2017/08/29/a-timeline-of-the-dramatic-developments-that-led-to-the-rebirth-of-the-great-british-bake-off-on-channel-4-6887039/"
 							>A timeline of the dramatic developments that led to the rebirth of The Great British Bake Off on Channel 4</a>
-							</div>
-
-							<div>
+						</div>
+						<div>
 							<a href="https://www.dailymail.co.uk/tvshowbiz/article-6412353/Great-British-Bake-moved-Channel-4-escape-three-years-bullying-BBC-bosses.html">
-								Great British Bake Off creator claims £75million move to Channel 4 was to escape 'three years of bullying from arrogant BBC bosses</a>
-							</div>
-							<div>
+							Great British Bake Off creator claims £75million move to Channel 4 was to escape 'three years of bullying from arrogant BBC bosses</a>
+						</div>
+						<div>
 							<a href="https://www.eater.com/2016/9/22/13014148/great-british-bake-off-mary-berry-leaving">RIP Great British Bake Off: Mary Berry Is Out</a>
-							</div>
-							<div>
+						</div>
+						<div>
 							<a href="https://www.theguardian.com/tv-and-radio/2016/sep/13/sue-perkins-and-mel-giedroyc-to-leave-great-british-bake-off">
-								Sue Perkins and Mel Giedroyc to leave Great British Bake Off</a>
-							</div>
+							Sue Perkins and Mel Giedroyc to leave Great British Bake Off</a>
+						</div>
 					</div>				
 				</div>
-
 			</section>
 		
 			<hr>
@@ -123,7 +120,7 @@
 					<span class='dashboard-num'>5</span>
 					<div class='small-description'>
 						<p>
-							Series 3 
+							Series 3 contestant
 							<a class='dashboard-link' href='https://en.wikipedia.org/wiki/James_Morton_(baker)'>James Morton</a>
 							has won the technical round the most, at 5 times.
 						</p>
@@ -134,7 +131,7 @@
 					<span class='dashboard-num'>5</span>
 					<div class='small-description'>
 						<p>
-							Series 5 
+							Series 5 contestant
 							<a class='dashboard-link' href='https://richardburr.london/about/'>Richard Burr</a>
 							 has won the most star bakers with 5 star baker titles.
 						</p>
@@ -145,13 +142,15 @@
 					<section id= 'other'></section>
 				</div>
 			</section> 
+
 			<hr>
 
 			<section id="bubble-container">
 				<div class='center'>
 					<h1>Who are the Winners?</h1>
-					<h5>The Series 1 - 10 winners are Edd, Joanne, John, Frances, Nadiya, Candice,<br> 
-						Sophie, Rahul, and David, sized by their combined Twitter and Instagram followers.<br>
+					<h5>
+						The Series 1 - 10 winners (Edd, Joanne, John, Frances, Nadiya, Candice,<br> 
+						Sophie, Rahul, and David), sized by their combined Twitter and Instagram followers.<br>
 						Click on a winner to learn more about them!<br>
 					</h5>
 				</div>
@@ -184,8 +183,9 @@
 			</section>
 		
 		</div>
-		<script src="//d3js.org/d3.v4.min.js"></script>
-		<script src="./scripts/main.js"></script>
-	</body>
 
+	<script src="//d3js.org/d3.v4.min.js"></script>
+	<script src="./scripts/main.js"></script>
+	</body>
+	
 </html>

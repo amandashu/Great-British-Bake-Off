@@ -13,6 +13,10 @@ body{
 /*FONTS AND GENERAL STYLING*/
 body {
     font-family: Verdana;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 h1 {
@@ -33,14 +37,14 @@ hr {
 }
 
 
-a{
+a {
     text-decoration: none;
 }
 
 /*TOP BAR ELEMENTS*/
 #topbar { 
     position:fixed;
-    width:100%;
+    width: 100%;
     z-index:1; /*stack on top*/
     top: 0px; /*set top position*/
 }
@@ -58,9 +62,8 @@ a{
     float:right!important
 }
 
-
 /*HEADER ELEMENTS*/
-.header-container img {
+#header-container img {
     width: 100%;
 }
 
@@ -76,7 +79,7 @@ a{
     padding-top: 20px; /*change vertical scaling of image*/
 }
 
-.header-container {
+#header-container {
     display: flex;
     width: 100%; 
     text-align: center;
@@ -115,6 +118,7 @@ a{
     height: 500px; /*give specified height since highchart redraw only resizes on width*/
     width:60%
 }
+
 .word-container {
     width:40%
 }
@@ -139,26 +143,26 @@ a{
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
-  }
+}
 
 .arrow {
     display: inline-block;
     padding: 3px;
-  }
+}
 
 .down {
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
-  }
+}
 
-  #viewership-more div{
+#viewership-more div{
       margin-top:12px
-  }
+}
 
-  #viewership-more a {
+#viewership-more a {
       font-size: 10px;
       text-decoration: underline;
-  }
+}
 
 /*DASHBOARD*/
 .dashboard-container {
@@ -175,7 +179,7 @@ a{
     padding:20px
 }
 
-.dashboard-num{
+.dashboard-num {
     font-size:24px
 }
 
@@ -201,7 +205,7 @@ a{
     width: 50%;
     overflow: hidden;
     max-height:450px;
-  }
+}
 
 .tab {
     padding-right: 20px
