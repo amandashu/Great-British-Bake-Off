@@ -176,10 +176,11 @@ a {
 }
 
 #vm-button-text {
-    margin-bottom:2px
+    margin-bottom:0px;
 }
 
-#arrow {
+#arrow-p {    
+    margin-top: 0px;
     margin-bottom: 6px
 }
 
