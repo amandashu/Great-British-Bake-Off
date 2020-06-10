@@ -83,7 +83,7 @@ a {
     display: flex;
     width: 100%; 
     text-align: center;
-    margin-top:38px;
+    margin-top:42px;
     margin-bottom: 50px;
     padding-bottom: 0px;
 }
@@ -133,6 +133,12 @@ a {
     text-align: center;
 }
 
+/*ABOUT*/
+#about{
+    padding-left: 210px;
+    padding-right: 210px
+}
+
 /*VIEWERSHIP SECTION */
 #viewership-more-button {
     width: 80%;
@@ -155,6 +161,11 @@ a {
     -webkit-transform: rotate(45deg);
 }
 
+.up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+  }  
+
 #viewership-more div{
       margin-top:12px
 }
@@ -162,6 +173,14 @@ a {
 #viewership-more a {
       font-size: 10px;
       text-decoration: underline;
+}
+
+#vm-button-text {
+    margin-bottom:2px
+}
+
+#arrow {
+    margin-bottom: 6px
 }
 
 /*DASHBOARD*/

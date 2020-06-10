@@ -85,18 +85,30 @@ vmButton.addEventListener("mouseout", hovercolor(vmButton, bcolor));
 
 // helper function that reveals and hides tag
 function seeMore(id) {
-	return function(){
-		let tag = document.getElementById(id);
-		if (tag.style.maxHeight){
-			tag.style.maxHeight = null;
-		} else {
-			tag.style.maxHeight = tag.scrollHeight + "px";
-		} 
+	let tag = document.getElementById(id);
+	if (tag.style.maxHeight){
+		tag.style.maxHeight = null;
+	} else {
+		tag.style.maxHeight = tag.scrollHeight + "px";
+	} 
+}
+
+// helper function for viewership more button
+function viewershipMore(){
+	let but = document.getElementById('vm-button-text')
+	let arrow = document.getElementById('arrow')
+	if (but.innerText == 'Read More'){
+		but.innerText = 'See Less';
+		arrow.classList = 'arrow up'
+	} else {
+		but.innerText = 'Read More';
+		arrow.classList = 'arrow down'
 	}
+	seeMore('viewership-more');
 }
 
 // see more for line plot
-document.getElementById("viewership-more-button").addEventListener("click", seeMore('viewership-more'));
+document.getElementById("viewership-more-button").addEventListener("click", viewershipMore)
 
 // dashboard mouse over
 function dashboardMouseOver(t){
@@ -128,7 +140,7 @@ function dashboardMouseOver(t){
 		}
 
 		//reveal div
-		seeMore('dashboard-definition-div')();
+		seeMore('dashboard-definition-div');
 	}
 }
 
@@ -140,7 +152,7 @@ function dashboardMouseOut(id){
 		tag.style.backgroundColor = bcolor;
 
 		//unreveal div
-		seeMore('dashboard-definition-div')();
+		seeMore('dashboard-definition-div');
 	}
 }
 
@@ -377,9 +389,7 @@ function plotWordCloud(){
 				fontFamily: font,
 				color: blue
 			},
-			marginLeft: 50,
-			marginRight:50,
-			height: 500
+			height: 600
 		},
         accessibility: {
             screenReaderSection: {
@@ -599,14 +609,14 @@ function plotBubble(){
 		// hover functionality on circles
 		g.on("mouseover",
 		function mouseOver(d) {
-			seeMore('bubble-more')(); 
+			seeMore('bubble-more'); 
 			d3.selectAll("circle").attr("opacity", 0.3);
 			d3.select(this).select(".baker").attr("opacity",1);
 			d3.select(this).select(".serieslabel").attr("opacity",1);
 			bakermore(d)
 		  })
 		  .on("mouseout", function mouseOut(d) {
-			seeMore('bubble-more')();
+			seeMore('bubble-more');
 			d3.selectAll("circle").attr("opacity", 1);
 			d3.select(this).select(".serieslabel").attr("opacity",0);
 		  });
